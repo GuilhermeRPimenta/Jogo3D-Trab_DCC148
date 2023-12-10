@@ -1,0 +1,322 @@
+fileFormatVersion: 2
+guid: a555f38679ba03b4aaa929c45378ded5
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'RightHand' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 3c5f4b0ec5e4b4e4bb4a4785cb311752
+  - b6bfcd8e2e14ec34bbd13e50b27da574
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: scrake_circus(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: scrake_CIRCUS
+      parentName: scrake_circus(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CHR_Pelvis
+      parentName: scrake_circus(Clone)
+      position: {x: 0.00000020861626, y: 6.4141526, z: -0.2576278}
+      rotation: {x: 0.4816858, y: -0.5176665, z: -0.481686, w: 0.51766676}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: Collision_Attach
+      parentName: CHR_Pelvis
+      position: {x: 6.4160724, y: -0.20431171, z: 0.0000008213977}
+      rotation: {x: -0.48168656, y: 0.517666, z: 0.51766694, w: -0.48168555}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999998}
+    - name: CHR_RThigh
+      parentName: CHR_Pelvis
+      position: {x: -0.13489151, y: 0.18888566, z: -0.61436087}
+      rotation: {x: 0.0035117413, y: 0.99530363, z: -0.07510738, w: -0.06096905}
+      scale: {x: 0.9999999, y: 1.0000004, z: 0.9999999}
+    - name: CHR_RCalf
+      parentName: CHR_RThigh
+      position: {x: -3.0573275, y: -0.0000014305115, z: -0.00000047683716}
+      rotation: {x: 0.076991834, y: -0.01520208, z: 0.1507783, w: 0.98544765}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1}
+    - name: CHR_RAnkle
+      parentName: CHR_RCalf
+      position: {x: -2.7051086, y: -0.0000010728836, z: 0.00000071525574}
+      rotation: {x: -0.038520817, y: -0.053441897, z: -0.47521493, w: 0.8774001}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+    - name: CHR_RToe1
+      parentName: CHR_RAnkle
+      position: {x: -1.109233, y: 0.18745476, z: -0.12090039}
+      rotation: {x: 0.007939373, y: 0.015406717, z: -0.3896317, w: 0.92080766}
+      scale: {x: 1, y: 1, z: 0.9999998}
+    - name: CHR_Spine1
+      parentName: CHR_Pelvis
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.00000059731985, y: -0.000000039726476, z: 0.033650976, w: 0.9994337}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: CHR_Spine2
+      parentName: CHR_Spine1
+      position: {x: -1.1245975, y: -0.00000011920929, z: -0.000000073910996}
+      rotation: {x: 0.00000023091476, y: -0.00000016461654, z: 0.005377251, w: 0.9999856}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1}
+    - name: CHR_Spine3
+      parentName: CHR_Spine2
+      position: {x: -1.1245971, y: 0.00000029802322, z: 0.0000003588425}
+      rotation: {x: 0.00000046299704, y: -0.000000042060645, z: -0.04698861, w: 0.99889547}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: CHR_Ribcage
+      parentName: CHR_Spine3
+      position: {x: -1.1245975, y: -0.0000002682209, z: 0.0000004310682}
+      rotation: {x: -0.00000055094273, y: 0.00000015867012, z: 0.05240349, w: 0.99862605}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: CHR_RArmCollar
+      parentName: CHR_Ribcage
+      position: {x: 0.09825516, y: 0.5101534, z: -0.107025355}
+      rotation: {x: -0.030004011, y: -0.66702414, z: 0.13154781, w: 0.7327167}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000001}
+    - name: CHR_RArmUpper
+      parentName: CHR_RArmCollar
+      position: {x: -1.2714105, y: 0, z: 0}
+      rotation: {x: -0.12533098, y: -0.05779899, z: -0.11565403, w: 0.9836542}
+      scale: {x: 0.9999998, y: 0.9999997, z: 0.9999995}
+    - name: CHR_RArmForeArm
+      parentName: CHR_RArmUpper
+      position: {x: -2.1922789, y: -0.00000023841858, z: -0.0000019073486}
+      rotation: {x: 0.019509502, y: 0.021003764, z: -0.030517036, w: 0.9991231}
+      scale: {x: 1.0000005, y: 1.0000002, z: 1.0000002}
+    - name: CHR_RArmPalm
+      parentName: CHR_RArmForeArm
+      position: {x: -1.602849, y: -0.0000013113022, z: 0}
+      rotation: {x: 0.74481916, y: 0.0371147, z: -0.039896183, w: 0.6650378}
+      scale: {x: 0.9999996, y: 0.9999998, z: 1}
+    - name: CHR_LArmCollar
+      parentName: CHR_Ribcage
+      position: {x: 0.09825516, y: 0.51015335, z: 0.10702537}
+      rotation: {x: 0.03000409, y: 0.66702396, z: 0.1315477, w: 0.73271686}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1.0000001}
+    - name: CHR_LArmUpper
+      parentName: CHR_LArmCollar
+      position: {x: -1.271411, y: 0.00000011920929, z: 0.0000009536743}
+      rotation: {x: 0.12533092, y: 0.057799503, z: -0.11565414, w: 0.9836542}
+      scale: {x: 0.9999999, y: 0.9999998, z: 1}
+    - name: CHR_LArmForeArm
+      parentName: CHR_LArmUpper
+      position: {x: -2.1922789, y: -0.00000035762787, z: 0.00000047683716}
+      rotation: {x: -0.019509545, y: -0.021003846, z: -0.030517094, w: 0.99912316}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: CHR_LArmPalm
+      parentName: CHR_LArmForeArm
+      position: {x: -1.6028495, y: -0.0000009536743, z: -0.00000047683716}
+      rotation: {x: -0.7458086, y: -0.013508459, z: -0.016651472, w: 0.6658151}
+      scale: {x: 1, y: 0.99999994, z: 0.9999996}
+    - name: CHR_LArmDigit11
+      parentName: CHR_LArmPalm
+      position: {x: -0.16881728, y: -0.120232105, z: 0.116500854}
+      rotation: {x: 0.44025162, y: 0.07862587, z: -0.086490825, w: 0.8902336}
+      scale: {x: 1.0000004, y: 1, z: 1.0000001}
+    - name: CHR_LArmDigit12
+      parentName: CHR_LArmDigit11
+      position: {x: -0.3196599, y: -0.00000047683716, z: -0.00000023841858}
+      rotation: {x: -0.014734588, y: -0.0014495692, z: 0.022185089, w: 0.9996443}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000004}
+    - name: CHR_LArmDigit13
+      parentName: CHR_LArmDigit12
+      position: {x: -0.22483301, y: 0, z: 0.00000023841858}
+      rotation: {x: -0.016732669, y: 0.027361887, z: 0.21992162, w: 0.9749902}
+      scale: {x: 0.9999999, y: 0.9999997, z: 0.9999999}
+    - name: CHR_LArmDigit21
+      parentName: CHR_LArmPalm
+      position: {x: -0.62343454, y: 0.06670523, z: 0.2123537}
+      rotation: {x: 0.0711013, y: 0.36505812, z: -0.023814443, w: 0.9279602}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: CHR_LArmDigit22
+      parentName: CHR_LArmDigit21
+      position: {x: -0.3026414, y: 0, z: -0.00000023841858}
+      rotation: {x: 0.0025886204, y: 0.0039799185, z: 0.03180131, w: 0.999483}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: CHR_LArmDigit23
+      parentName: CHR_LArmDigit22
+      position: {x: -0.17429018, y: -0.0000009536743, z: -0.00000047683716}
+      rotation: {x: -0.009427728, y: -0.0019434079, z: 0.15508199, w: 0.9878547}
+      scale: {x: 0.99999994, y: 0.9999997, z: 0.99999976}
+    - name: CHR_LArmDigit31
+      parentName: CHR_LArmPalm
+      position: {x: -0.64140224, y: 0.074730396, z: 0.060832977}
+      rotation: {x: -0.059278656, y: 0.008859346, z: 0.015444555, w: 0.99808264}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1.0000004}
+    - name: CHR_LArmDigit32
+      parentName: CHR_LArmDigit31
+      position: {x: -0.34087133, y: 0, z: 0}
+      rotation: {x: -0.020417651, y: -0.000695096, z: 0.02231827, w: 0.99954224}
+      scale: {x: 0.99999994, y: 1, z: 0.99999976}
+    - name: CHR_LArmDigit33
+      parentName: CHR_LArmDigit32
+      position: {x: -0.25548363, y: -0.00000023841858, z: 0.00000023841858}
+      rotation: {x: 0.015727013, y: 0.016804317, z: 0.07504681, w: 0.9969144}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999994}
+    - name: CHR_LArmDigit41
+      parentName: CHR_LArmPalm
+      position: {x: -0.613575, y: 0.055445194, z: -0.10046768}
+      rotation: {x: -0.19705018, y: 0.00927144, z: 0.012331922, w: 0.980272}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000002}
+    - name: CHR_LArmDigit42
+      parentName: CHR_LArmDigit41
+      position: {x: -0.32596445, y: 0, z: 0.00000023841858}
+      rotation: {x: 0.004528833, y: 0.0008532401, z: 0.023106212, w: 0.9997224}
+      scale: {x: 0.9999997, y: 0.9999998, z: 0.99999994}
+    - name: CHR_LArmDigit43
+      parentName: CHR_LArmDigit42
+      position: {x: -0.22899961, y: -0.00000047683716, z: 0}
+      rotation: {x: 0.006739738, y: 0.0039520767, z: 0.0664778, w: 0.9977573}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
+    - name: CHR_LArmDigit51
+      parentName: CHR_LArmPalm
+      position: {x: -0.56940174, y: 0.0019783974, z: -0.22653508}
+      rotation: {x: -0.36672696, y: 0.032249324, z: 0.021156155, w: 0.92952883}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: CHR_LArmDigit52
+      parentName: CHR_LArmDigit51
+      position: {x: -0.25976133, y: -0.000000834465, z: -0.00000023841858}
+      rotation: {x: 0.013593482, y: 0.002525953, z: 0.03135692, w: 0.9994126}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999998}
+    - name: CHR_LArmDigit53
+      parentName: CHR_LArmDigit52
+      position: {x: -0.150805, y: 0.0000009536743, z: 0}
+      rotation: {x: -0.0016587942, y: 0.0008161093, z: 0.03516249, w: 0.99937993}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000001}
+    - name: CHR_Neck
+      parentName: CHR_Ribcage
+      position: {x: -0.53738785, y: 0.4101325, z: -0.00000024423207}
+      rotation: {x: -0.00000032970607, y: 0.00000014973, z: -0.12971847, w: 0.99155086}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: CHR_Head
+      parentName: CHR_Neck
+      position: {x: -0.6816006, y: 0.00000047683716, z: -0.00000010352505}
+      rotation: {x: 0.00000033057418, y: -0.00000014691307, z: 0.1297185, w: 0.99155086}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: CHR_HeadJAW
+      parentName: CHR_Head
+      position: {x: -0.1031847, y: 0.18862775, z: 0.00000037247628}
+      rotation: {x: -0.00000017558467, y: 1, z: 0.0000001509958, w: 9.014588e-15}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CHR_LThigh
+      parentName: CHR_Pelvis
+      position: {x: -0.13489103, y: 0.18888426, z: 0.6143612}
+      rotation: {x: 0.0035114044, y: 0.9953036, z: 0.07510842, w: 0.060969196}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: CHR_LCalf
+      parentName: CHR_LThigh
+      position: {x: -3.0573273, y: -0.0000014901161, z: -0.00000011920929}
+      rotation: {x: -0.076992124, y: 0.015202251, z: 0.15078136, w: 0.98544717}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: CHR_LAnkle
+      parentName: CHR_LCalf
+      position: {x: -2.7051063, y: -0.0000012218952, z: -0.00000011920929}
+      rotation: {x: 0.03849182, y: 0.053410288, z: -0.47536558, w: 0.87732166}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: CHR_LToe1
+      parentName: CHR_LAnkle
+      position: {x: -1.1092333, y: 0.18745491, z: 0.12089932}
+      rotation: {x: -0.0079536205, y: -0.015368651, z: -0.38947752, w: 0.9208734}
+      scale: {x: 1.0000002, y: 0.9999999, z: 0.99999994}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
