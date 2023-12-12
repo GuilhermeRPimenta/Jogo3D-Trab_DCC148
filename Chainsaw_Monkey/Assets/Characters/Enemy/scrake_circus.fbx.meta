@@ -78,8 +78,15 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips:
+  - c19653fd32b5b3549b8797f2400b2058
+  - 5a2826593ca012344a84dd3ad8db2f58
+  - 8671cecb2ac74294c9a7a5a356dfe2fa
+  - 6126ae12e2a11e44c87cf76d74e159e8
+  - b74794110cd3fc84aa5c08898e424fbb
+  - 60a5f0fb2372e0845ae81459c1d6e2e9
   - 3c5f4b0ec5e4b4e4bb4a4785cb311752
   - b6bfcd8e2e14ec34bbd13e50b27da574
+  - 32a53266f12ab8d4e9b6f7751473fd0e
   importAnimation: 0
   humanDescription:
     serializedVersion: 3
