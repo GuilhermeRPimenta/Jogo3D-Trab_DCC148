@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class scrakeScript : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class scrakeScript : MonoBehaviour
     void Update()
     {
         
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < 2 &&  Mathf.Abs(player.transform.position.z - transform.position.z) < 2){
+        /*if(Mathf.Abs(player.transform.position.x - transform.position.x) < 2 &&  Mathf.Abs(player.transform.position.z - transform.position.z) < 2){
             if(attackTimer <=0){
                 animator.SetInteger("State", 1);
                 //agent.destination = transform.position;
@@ -44,7 +45,17 @@ public class scrakeScript : MonoBehaviour
                 attackTimer -= Time.deltaTime;
             }
             
-        }
+        }*/
+        
+        
+        if(Input.inputString != ""){
+    int number;
+    bool is_a_number = Int32.TryParse(Input.inputString, out number);
+    if (is_a_number && number >= 0 && number < 10){
+        animator.SetInteger("State", number);
+        Debug.Log(number);
+    }
+}
         
 
         
