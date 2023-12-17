@@ -12,6 +12,7 @@ public class AIController : MonoBehaviour
     public GameObject enemySpine;
     public Animator enemyAnimator;
 
+    public float attackRange = 1.5f;
     public float frontAttackTimer = 0;
     public float frontAttackDuration = 2;
     public float frontAttackSpeed = 2;
@@ -29,7 +30,7 @@ public class AIController : MonoBehaviour
 
 
     //END OF AI SPECIFIC VARIABLES
-    private BehaviourTreeNode frontOrSpinAttack;
+    private BehaviourTreeNode attackTree;
 
     //CONSTRUCTOR
     /*public AIController(){
@@ -48,11 +49,15 @@ public class AIController : MonoBehaviour
     }
     public void BuildBehaviourTree()
     {
+        //CREATING NODES WICH REPEAT
+        BehaviourTreeNode checkIfFrontAttacking = new CheckIfFrontAttacking(this);
+        BehaviourTreeNode checkIfSpinAttacking = new CheckIfSpinAttacking(this);
+        //END OF NODES WICH REPEAT
 
 
-
+        //ATTACK TREE
         SequenceNode frontAttacking = new SequenceNode();
-        frontAttacking.addChild(new CheckIfFrontAttacking(this));
+        frontAttacking.addChild(checkIfFrontAttacking);
         frontAttacking.addChild(new ContinueFrontAttack(this));
 
         SelectorNode frontAttackingOrStartFrontAttacking = new SelectorNode();
@@ -64,22 +69,34 @@ public class AIController : MonoBehaviour
         checkIfShouldFrontAttack.addChild(frontAttackingOrStartFrontAttacking);
 
         SequenceNode spinAttacking = new SequenceNode();
-        spinAttacking.addChild(new CheckIfSpinAttacking(this));
+        spinAttacking.addChild(checkIfSpinAttacking);
         spinAttacking.addChild(new ContinueSpinAttack(this));
 
         SelectorNode spinAttackingOrStartSpinAttacking = new SelectorNode();
         spinAttackingOrStartSpinAttacking.addChild(spinAttacking);
         spinAttackingOrStartSpinAttacking.addChild(new StartSpinAttacking(this));
 
-        frontOrSpinAttack = new SelectorNode();
+        SelectorNode frontOrSpinAttack = new SelectorNode();
         frontOrSpinAttack.addChild(checkIfShouldFrontAttack);
         frontOrSpinAttack.addChild(spinAttackingOrStartSpinAttacking);
+
+        SelectorNode checkIfShouldBeAttacking = new SelectorNode();
+        checkIfShouldBeAttacking.addChild(new CheckIfPlayerIsInAttackRange(this));
+        checkIfShouldBeAttacking.addChild(checkIfFrontAttacking);
+        checkIfShouldBeAttacking.addChild(checkIfSpinAttacking);
+
+        attackTree = new SequenceNode();
+        attackTree.addChild(checkIfShouldBeAttacking);
+        attackTree.addChild(frontOrSpinAttack);
+        // END OF ATTACK TREE
+
+        
 
     }
 
     // Update is called once per frame
     public void UpdateBehaviourTreeProcess()
     {
-        frontOrSpinAttack.process();
+        attackTree.process();
     }
 }
