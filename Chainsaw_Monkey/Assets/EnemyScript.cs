@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class scrakeScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private GameObject player;
+    
     private Animator animator;
     private float attackTimer = 0f;
+    private GameObject player;
+    private AIController enemyAIController;
+    private GameObject aIControllerHolder;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,14 @@ public class scrakeScript : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponent<Animator>();
         agent.destination = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        
+        //enemyAIController = new AIController(gameObject, player,3);
+        aIControllerHolder = GameObject.Find("AIControllerHolder");
+        enemyAIController = aIControllerHolder.AddComponent<AIController>();
+        enemyAIController.DeclareAIVariables();
+        enemyAIController.BuildBehaviourTree();
+        
+
     }
 
     // Update is called once per frame
@@ -49,13 +60,17 @@ public class scrakeScript : MonoBehaviour
         
         
         if(Input.inputString != ""){
-    int number;
-    bool is_a_number = Int32.TryParse(Input.inputString, out number);
-    if (is_a_number && number >= 0 && number < 10){
-        animator.SetInteger("State", number);
-        Debug.Log(number);
-    }
-}
+            int number;
+            bool is_a_number = Int32.TryParse(Input.inputString, out number);
+            if (is_a_number && number >= 0 && number < 10){
+                animator.SetInteger("State", number);
+                //Debug.Log(number);
+                
+            }
+        }
+
+        enemyAIController.UpdateBehaviourTreeProcess();
+
         
 
         

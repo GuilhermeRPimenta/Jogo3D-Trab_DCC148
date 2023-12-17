@@ -5,22 +5,23 @@ using UnityEngine.AI;
 
 public class ContinueFrontAttack : BehaviourTreeNode
 {
-    public float frontAttackTimer;
-    public float frontAttackDuration;
-    public bool attacking;
-    public NavMeshAgent agent;
-    public float frontAttackSpeed;
-    public float walkingSpeed;
+    private AIController aIController;
+    public ContinueFrontAttack(AIController aIController){
+        this.aIController = aIController;
+    }
 
     public override bool process()
     {
-        agent.speed = frontAttackSpeed;
-        frontAttackTimer -= Time.deltaTime;
+        aIController.enemyAnimator.SetInteger("State", 2);
+        aIController.agent.speed = aIController.frontAttackSpeed;
+        aIController.agent.destination = new Vector3(aIController.player.transform.position.x, aIController.player.transform.position.y -1.7f, aIController.player.transform.position.z);
+        aIController.frontAttackTimer += Time.deltaTime;
+        
 
-        if(frontAttackTimer <=0){
-            frontAttackTimer = frontAttackDuration;
-            attacking = false;
-            agent.speed = walkingSpeed;
+        if(aIController.frontAttackTimer >=aIController.frontAttackDuration){
+            aIController.frontAttackTimer = 0;
+            aIController.frontAttacking = false;
+            aIController.agent.speed = aIController.walkingSpeed;
         }
         
 
