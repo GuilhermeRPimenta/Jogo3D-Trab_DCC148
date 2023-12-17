@@ -7,11 +7,17 @@ public class AIController : MonoBehaviour
 {
     //AI VARIABLES
     //public EnemyScript enemyScript;
+    //Generic
     public GameObject player;
     public GameObject enemy;
     public GameObject enemySpine;
     public Animator enemyAnimator;
+    public NavMeshAgent agent;
 
+    //Movement
+    public float walkingSpeed = 2;
+
+    //Attack
     public float attackRange = 1.5f;
     public float frontAttackTimer = 0;
     public float frontAttackDuration = 2;
@@ -20,17 +26,21 @@ public class AIController : MonoBehaviour
     public bool spinAttacking = false;
     public float spinAttackTimer = 0;
     public float spinAttackDuration = 0.5f;
-    public NavMeshAgent agent;
     public float spinAttackSpeed = 2;
-    public float walkingSpeed = 2;
-    public int number;
+    
+    //Stun
+    public bool stunned = false;
+    public float SP = 50;
+    public float secondStunPoints = 150;
+    public float stunTimer = 0;
+    public float stunDuration = 1.5f;
 
 
     
 
 
     //END OF AI SPECIFIC VARIABLES
-    private BehaviourTreeNode attackTree;
+    private BehaviourTreeNode stunTree;
 
     //CONSTRUCTOR
     /*public AIController(){
@@ -85,11 +95,16 @@ public class AIController : MonoBehaviour
         checkIfShouldBeAttacking.addChild(checkIfFrontAttacking);
         checkIfShouldBeAttacking.addChild(checkIfSpinAttacking);
 
-        attackTree = new SequenceNode();
+        SequenceNode attackTree = new SequenceNode();
         attackTree.addChild(checkIfShouldBeAttacking);
         attackTree.addChild(frontOrSpinAttack);
         // END OF ATTACK TREE
 
+        //STUN TREE
+        stunTree = new SequenceNode();
+        stunTree.addChild(new CheckIfShouldStun(this));
+        stunTree.addChild(new StunLogic(this));
+        //END OF STUN TREE
         
 
     }
@@ -97,6 +112,6 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     public void UpdateBehaviourTreeProcess()
     {
-        attackTree.process();
+        stunTree.process();
     }
 }
