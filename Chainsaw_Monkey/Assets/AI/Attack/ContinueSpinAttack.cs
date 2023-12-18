@@ -22,7 +22,7 @@ public class ContinueSpinAttack : BehaviourTreeNode
         if(aIController.spinAttackTimer >=aIController.spinAttackDuration){
             aIController.spinAttackTimer = 0;
             aIController.spinAttacking = false;
-            aIController.agent.speed = aIController.walkingSpeed;
+            aIController.agent.speed = aIController.runningSpeed;
         }
         
 

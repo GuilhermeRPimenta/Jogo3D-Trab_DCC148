@@ -21,7 +21,7 @@ public class ContinueFrontAttack : BehaviourTreeNode
         if(aIController.frontAttackTimer >=aIController.frontAttackDuration){
             aIController.frontAttackTimer = 0;
             aIController.frontAttacking = false;
-            aIController.agent.speed = aIController.walkingSpeed;
+            aIController.agent.speed = aIController.runningSpeed;
         }
         
 

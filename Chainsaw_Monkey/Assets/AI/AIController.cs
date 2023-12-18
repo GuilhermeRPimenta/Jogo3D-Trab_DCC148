@@ -13,9 +13,11 @@ public class AIController : MonoBehaviour
     public GameObject enemySpine;
     public Animator enemyAnimator;
     public NavMeshAgent agent;
+    public LayerMask Ground;
 
     //Movement
     public float walkingSpeed = 2;
+    public float runningSpeed = 4.0f;
     public bool running = false;
 
     //Attack
@@ -41,12 +43,16 @@ public class AIController : MonoBehaviour
     public int enemyLayer;
     public GameObject enemyHead;
 
+    //Hearing
+    public bool heardSound = false;
+    public Vector3 soundPosition;
+
 
     
 
 
     //END OF AI SPECIFIC VARIABLES
-    private BehaviourTreeNode sightTree;
+    private BehaviourTreeNode hearingTree;
 
     //CONSTRUCTOR
     /*public AIController(){
@@ -65,6 +71,8 @@ public class AIController : MonoBehaviour
         SP = firstStunPoints;
         enemyLayer = enemy.layer;
         enemyHead = GameObject.Find("CHR_Head");
+        Ground = LayerMask.GetMask("Ground");
+
     }
     public void BuildBehaviourTree()
     {
@@ -116,9 +124,14 @@ public class AIController : MonoBehaviour
         //END OF STUN TREE
 
         //SIGHT TREE
-        sightTree = new SequenceNode();
+        SequenceNode sightTree = new SequenceNode();
         sightTree.addChild(new CheckIfPlayerIsVisible(this));
         sightTree.addChild(new FollowPlayer(this));
+
+        //HEARING TREE
+        hearingTree = new SequenceNode();
+        hearingTree.addChild(new CheckSoundNearby(this));
+        hearingTree.addChild(new FollowSound(this));
         
 
     }
@@ -126,6 +139,6 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     public void UpdateBehaviourTreeProcess()
     {
-        sightTree.process();
+        hearingTree.process();
     }
 }

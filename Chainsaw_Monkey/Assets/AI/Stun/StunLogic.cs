@@ -12,6 +12,7 @@ public class StunLogic : BehaviourTreeNode
     public override bool process(){
         aIController.stunned = true;
         aIController.enemyAnimator.SetInteger("State", 7);
+        aIController.agent.speed = 0;
         if(aIController.stunTimer >= aIController.stunDuration){
             aIController.stunned = false;
             aIController.stunTimer = 0;

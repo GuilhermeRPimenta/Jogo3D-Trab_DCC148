@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : BehaviourTreeNode
+public class FollowSound : BehaviourTreeNode
 {
     private AIController aIController;
-    public FollowPlayer(AIController aIController){
+    public FollowSound(AIController aIController){
         this.aIController = aIController;
     }
 
     public override bool process(){
-        aIController.agent.destination = new Vector3(aIController.player.transform.position.x, aIController.player.transform.position.y -1.7f, aIController.player.transform.position.z);
+        Ray ray = new Ray(aIController.soundPosition, Vector3.down);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, Mathf.Infinity, aIController.Ground);
+        aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
         aIController.agent.speed = aIController.runningSpeed;
         aIController.running = true;
         aIController.enemyAnimator.SetInteger("State", 1);
-        
         return true;
     }
 }
