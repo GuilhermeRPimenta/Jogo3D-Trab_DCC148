@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
     public Animator enemyAnimator;
     public NavMeshAgent agent;
     public LayerMask Ground;
+    public int groundLayer = 6;
 
     //Movement
     public float walkingSpeed = 2;
@@ -46,6 +47,9 @@ public class AIController : MonoBehaviour
     //Hearing
     public bool heardSound = false;
     public Vector3 soundPosition;
+
+    //Destination
+    public bool lookedAround = false;
 
 
     
@@ -127,11 +131,21 @@ public class AIController : MonoBehaviour
         SequenceNode sightTree = new SequenceNode();
         sightTree.addChild(new CheckIfPlayerIsVisible(this));
         sightTree.addChild(new FollowPlayer(this));
+        //END OF SIGHT TREE
 
         //HEARING TREE
         hearingTree = new SequenceNode();
         hearingTree.addChild(new CheckSoundNearby(this));
         hearingTree.addChild(new FollowSound(this));
+        // END OF HEARING TREE
+
+        //DESTINATION TREE
+        SequenceNode endOfLookingAround = new SequenceNode();
+
+
+        SequenceNode destinationTree = new SequenceNode();
+        destinationTree.addChild(new CheckIfIsInDestination(this));
+        //END OF DESTINATION TREE
         
 
     }
