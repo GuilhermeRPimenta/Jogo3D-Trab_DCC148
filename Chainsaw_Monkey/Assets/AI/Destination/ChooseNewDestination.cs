@@ -17,13 +17,20 @@ public class ChooseNewDestination : BehaviourTreeNode
             int randY = Random.Range(1,5);
             float randZ = Random.Range(10f,50f);
             Ray ray = new Ray(new Vector3(randX,randY,randZ), Vector3.down);
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, aIController.Ground)){
-                validPosition = true;
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
+                if(hit.collider.gameObject.layer == aIController.groundLayer){
+                    validPosition = true;   
+                }
+                //Debug.Log(validPosition);
             }
         } while(!validPosition);
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
         aIController.agent.speed = aIController.walkingSpeed;
         aIController.enemyAnimator.SetInteger("State", 0);
+
+        aIController.lookingAround = false;
+        aIController.lookedAround = false;
+        aIController.lookingAroundTimer = 0;
         return true;
 
     }

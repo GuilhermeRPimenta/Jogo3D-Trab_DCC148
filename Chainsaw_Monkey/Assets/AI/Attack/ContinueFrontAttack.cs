@@ -22,6 +22,7 @@ public class ContinueFrontAttack : BehaviourTreeNode
             aIController.frontAttackTimer = 0;
             aIController.frontAttacking = false;
             aIController.agent.speed = aIController.runningSpeed;
+            aIController.enemyAnimator.SetInteger("State", 1);
         }
         
 

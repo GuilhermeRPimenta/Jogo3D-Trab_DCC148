@@ -50,13 +50,16 @@ public class AIController : MonoBehaviour
 
     //Destination
     public bool lookedAround = false;
+    public bool lookingAround = false;
+    public float lookingAroundTimer = 0;
+    public float lookingAroundDuration = 3;
 
 
     
 
 
     //END OF AI SPECIFIC VARIABLES
-    private BehaviourTreeNode hearingTree;
+    private BehaviourTreeNode aliveActionSeletcor;
 
     //CONSTRUCTOR
     /*public AIController(){
@@ -85,6 +88,11 @@ public class AIController : MonoBehaviour
         BehaviourTreeNode checkIfSpinAttacking = new CheckIfSpinAttacking(this);
         //END OF NODES WICH REPEAT
 
+        //STUN TREE
+        SequenceNode stunTree = new SequenceNode();
+        stunTree.addChild(new CheckIfShouldStun(this));
+        stunTree.addChild(new StunLogic(this));
+        //END OF STUN TREE
 
         //ATTACK TREE
         SequenceNode frontAttacking = new SequenceNode();
@@ -121,12 +129,6 @@ public class AIController : MonoBehaviour
         attackTree.addChild(frontOrSpinAttack);
         // END OF ATTACK TREE
 
-        //STUN TREE
-        SequenceNode stunTree = new SequenceNode();
-        stunTree.addChild(new CheckIfShouldStun(this));
-        stunTree.addChild(new StunLogic(this));
-        //END OF STUN TREE
-
         //SIGHT TREE
         SequenceNode sightTree = new SequenceNode();
         sightTree.addChild(new CheckIfPlayerIsVisible(this));
@@ -134,18 +136,40 @@ public class AIController : MonoBehaviour
         //END OF SIGHT TREE
 
         //HEARING TREE
-        hearingTree = new SequenceNode();
+        SequenceNode hearingTree = new SequenceNode();
         hearingTree.addChild(new CheckSoundNearby(this));
         hearingTree.addChild(new FollowSound(this));
         // END OF HEARING TREE
 
         //DESTINATION TREE
         SequenceNode endOfLookingAround = new SequenceNode();
+        endOfLookingAround.addChild(new CheckIfLookedAround(this));
+        endOfLookingAround.addChild(new ChooseNewDestination(this));
+
+        SequenceNode continueLookingAround = new SequenceNode();
+        continueLookingAround.addChild(new CheckIfLookingAround(this));
+        continueLookingAround.addChild(new LookingAroundLogic(this));
+
+        SelectorNode lookingAroundSelector = new SelectorNode();
+        lookingAroundSelector.addChild(endOfLookingAround);
+        lookingAroundSelector.addChild(continueLookingAround);
+        lookingAroundSelector.addChild(new StartLookingAround(this));
 
 
         SequenceNode destinationTree = new SequenceNode();
         destinationTree.addChild(new CheckIfIsInDestination(this));
+        destinationTree.addChild(lookingAroundSelector);
         //END OF DESTINATION TREE
+
+        //ALIVE TREE
+        aliveActionSeletcor = new SelectorNode();
+        aliveActionSeletcor.addChild(stunTree);
+        aliveActionSeletcor.addChild(attackTree);
+        aliveActionSeletcor.addChild(sightTree);
+        aliveActionSeletcor.addChild(hearingTree);
+        aliveActionSeletcor.addChild(destinationTree);
+
+        //END OF ALIVE TREE
         
 
     }
@@ -153,6 +177,6 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     public void UpdateBehaviourTreeProcess()
     {
-        hearingTree.process();
+        aliveActionSeletcor.process();
     }
 }

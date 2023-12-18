@@ -23,6 +23,7 @@ public class ContinueSpinAttack : BehaviourTreeNode
             aIController.spinAttackTimer = 0;
             aIController.spinAttacking = false;
             aIController.agent.speed = aIController.runningSpeed;
+            aIController.enemyAnimator.SetInteger("State", 1);
         }
         
 
