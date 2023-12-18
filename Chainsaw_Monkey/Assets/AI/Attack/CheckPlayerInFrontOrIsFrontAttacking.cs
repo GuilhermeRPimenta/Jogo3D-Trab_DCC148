@@ -12,7 +12,7 @@ public class CheckPlayerInFrontOrIsFrontAttacking : BehaviourTreeNode
     public override bool process(){
         Vector3 enemyToPlayerDirection = aIController.player.transform.position - aIController.enemySpine.transform.position;
         float enemyToPlayerAngle = Vector3.Angle(enemyToPlayerDirection, aIController.enemySpine.transform.forward);
-        Debug.Log(enemyToPlayerAngle);
+        //Debug.Log(enemyToPlayerAngle);
 
         
         if(!aIController.spinAttacking){

@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour
     public NavMeshAgent agent;
     public LayerMask Ground;
     public int groundLayer = 6;
+    public float HP;
 
     //Movement
     public float walkingSpeed = 2;
@@ -52,14 +53,25 @@ public class AIController : MonoBehaviour
     public bool lookedAround = false;
     public bool lookingAround = false;
     public float lookingAroundTimer = 0;
-    public float lookingAroundDuration = 3;
+    public float lookingAroundDuration = 4.8f;
+
+    //Dead
+    public bool dead = false;
+    public bool resurrecting = false;
+    public bool resurrected = false;
+    public float healthValue = 200;
+    public float deathDuration = 10;
+    public float deathTimer = 0;
+    public float resurrectDuration = 3;
+    public float resurrectTimer = 0;
+    public Collider[] enemyColliders;
 
 
     
 
 
     //END OF AI SPECIFIC VARIABLES
-    private BehaviourTreeNode aliveActionSeletcor;
+    private BehaviourTreeNode mainTree;
 
     //CONSTRUCTOR
     /*public AIController(){
@@ -79,6 +91,8 @@ public class AIController : MonoBehaviour
         enemyLayer = enemy.layer;
         enemyHead = GameObject.Find("CHR_Head");
         Ground = LayerMask.GetMask("Ground");
+        HP = healthValue;
+        enemyColliders = enemy.GetComponentsInChildren<Collider>();
 
     }
     public void BuildBehaviourTree()
@@ -162,21 +176,60 @@ public class AIController : MonoBehaviour
         //END OF DESTINATION TREE
 
         //ALIVE TREE
-        aliveActionSeletcor = new SelectorNode();
+        SelectorNode aliveActionSeletcor = new SelectorNode();
         aliveActionSeletcor.addChild(stunTree);
         aliveActionSeletcor.addChild(attackTree);
         aliveActionSeletcor.addChild(sightTree);
         aliveActionSeletcor.addChild(hearingTree);
         aliveActionSeletcor.addChild(destinationTree);
-
         //END OF ALIVE TREE
         
+        //DEATH TREE
+        SequenceNode updatingResurrectTime = new SequenceNode();
+        updatingResurrectTime.addChild(new CheckIfNotResurrected(this));
+        updatingResurrectTime.addChild(new UpdateResurrectTimer(this));
+
+        SequenceNode isResurrecting = new SequenceNode();
+        isResurrecting.addChild(new CheckIfResurrected(this));
+        isResurrecting.addChild(new ResurrectLogic(this));
+
+        SelectorNode resurrectSelector = new SelectorNode();
+        resurrectSelector.addChild(new NotResurrecting(this));
+        resurrectSelector.addChild(updatingResurrectTime);
+        resurrectSelector.addChild(isResurrecting);
+
+        SequenceNode deathTree = new SequenceNode();
+        deathTree.addChild(new CheckIfDead(this));
+        deathTree.addChild(new UpdateDeathTimer(this));
+        deathTree.addChild(resurrectSelector);
+        //END OF DEATH TREE
+
+        //HP MANAGEMENT TREE
+        SequenceNode HPManagement = new SequenceNode();
+        HPManagement.addChild(new CheckHPBelow0(this));
+        HPManagement.addChild(new Kill(this));
+        //END OF HP MANAGEMENT TREE
+
+        //ALIVE OR DEAD TREE
+        mainTree = new SelectorNode();
+        mainTree.addChild(HPManagement);
+        mainTree.addChild(deathTree);
+        mainTree.addChild(aliveActionSeletcor);
+        //END OF ALIVE OR DEAD TREE
+
+        
+
+        //MAIN TREE
+        /*mainTree = new SelectorNode();
+        mainTree.addChild(HPManagement);
+        mainTree.addChild(aliveOrDead);*/
+        //END OF MAIN TREE
 
     }
 
     // Update is called once per frame
     public void UpdateBehaviourTreeProcess()
     {
-        aliveActionSeletcor.process();
+        mainTree.process();
     }
 }
