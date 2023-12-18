@@ -12,7 +12,6 @@ public class FollowPlayer : BehaviourTreeNode
     public override bool process(){
         aIController.agent.destination = new Vector3(aIController.player.transform.position.x, aIController.player.transform.position.y -1.7f, aIController.player.transform.position.z);
         aIController.agent.speed = aIController.runningSpeed;
-        aIController.running = true;
         aIController.enemyAnimator.SetInteger("State", 1);
         
         return true;

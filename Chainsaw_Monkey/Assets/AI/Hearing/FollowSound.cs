@@ -10,9 +10,7 @@ public class FollowSound : BehaviourTreeNode
     }
 
     public override bool process(){
-        bool validPosition = false;
         RaycastHit hit;
-        int n =0;
         Ray ray;
         Vector3 soundToEnemy;
         ray = new Ray(aIController.soundPosition, Vector3.down);
@@ -33,7 +31,6 @@ public class FollowSound : BehaviourTreeNode
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
 
         aIController.agent.speed = aIController.runningSpeed;
-        aIController.running = true;
         aIController.enemyAnimator.SetInteger("State", 1);
         aIController.heardSound = false;
         //Debug.Log(aIController.agent.destination);

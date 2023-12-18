@@ -19,21 +19,20 @@ public class AIController : MonoBehaviour
     //Movement
     public float walkingSpeed = 2;
     public float runningSpeed = 4.0f;
-    public bool running = false;
 
     //Attack
-    public float attackRange = 1.5f;
+    public float attackRange = 2.5f;
+    public float frontAttackAngle = 25;
     public float frontAttackTimer = 0;
-    public float frontAttackDuration = 2;
-    public float frontAttackSpeed = 2;
+    public float frontAttackDuration = 0.7f;
+    public float frontAttackSpeed = 6;
     public bool frontAttacking = false;
     public bool spinAttacking = false;
     public float spinAttackTimer = 0;
     public float spinAttackDuration = 0.5f;
-    public float spinAttackSpeed = 2;
+    public float spinAttackSpeed = 4.5f;
     
     //Stun
-    public bool stunned = false;
     public float SP;
     public float firstStunPoints = 50;
     public float secondStunPoints = 150;
@@ -43,6 +42,7 @@ public class AIController : MonoBehaviour
     //Vision
     public int enemyLayer;
     public GameObject enemyHead;
+    public float maxSightDistance = 50;
 
     //Hearing
     public bool heardSound = false;

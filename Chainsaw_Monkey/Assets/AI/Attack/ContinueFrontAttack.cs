@@ -17,13 +17,16 @@ public class ContinueFrontAttack : BehaviourTreeNode
         aIController.agent.destination = new Vector3(aIController.player.transform.position.x, aIController.player.transform.position.y -1.7f, aIController.player.transform.position.z);
         aIController.frontAttackTimer += Time.deltaTime;
         
-
-        if(aIController.frontAttackTimer >=aIController.frontAttackDuration){
-            aIController.frontAttackTimer = 0;
-            aIController.frontAttacking = false;
-            aIController.agent.speed = aIController.runningSpeed;
-            aIController.enemyAnimator.SetInteger("State", 1);
+        if(aIController.frontAttackTimer >=aIController.frontAttackDuration/2){
+            aIController.agent.speed = 0;
+            if(aIController.frontAttackTimer >=aIController.frontAttackDuration){
+                aIController.frontAttackTimer = 0;
+                aIController.frontAttacking = false;
+                aIController.agent.speed = aIController.runningSpeed;
+                aIController.enemyAnimator.SetInteger("State", 1);
+            }
         }
+        
         
 
         return true;

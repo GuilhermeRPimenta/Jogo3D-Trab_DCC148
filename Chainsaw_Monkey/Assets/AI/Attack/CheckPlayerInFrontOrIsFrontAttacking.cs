@@ -16,7 +16,7 @@ public class CheckPlayerInFrontOrIsFrontAttacking : BehaviourTreeNode
 
         
         if(!aIController.spinAttacking){
-            if(enemyToPlayerAngle < 45.0f){
+            if(enemyToPlayerAngle < aIController.frontAttackAngle){
                 return true;
             }
             else if(aIController.frontAttacking){

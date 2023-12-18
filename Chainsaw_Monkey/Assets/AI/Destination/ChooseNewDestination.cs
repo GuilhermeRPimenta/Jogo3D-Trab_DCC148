@@ -21,7 +21,6 @@ public class ChooseNewDestination : BehaviourTreeNode
                 if(hit.collider.gameObject.layer == aIController.groundLayer){
                     validPosition = true;   
                 }
-                //Debug.Log(validPosition);
             }
         } while(!validPosition);
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
