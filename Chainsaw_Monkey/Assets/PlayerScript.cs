@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    //Variaveis para rotação
+    //Rotation variables
     [SerializeField] private float eyeSpeed = 2f;
     private Quaternion baseOrientation;
     private float mouseH = 0;
@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject playerCamera;
     private Quaternion cameraBaseOrientation;
 
-    //Variaveis para movimentação
+    //Movement variables
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -23,6 +23,8 @@ public class PlayerScript : MonoBehaviour
     private float playerHeight = 1.7f;
     [SerializeField] private LayerMask Ground;
     private bool grounded;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +35,17 @@ public class PlayerScript : MonoBehaviour
 
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.freezeRotation = true;
+        Ground = LayerMask.GetMask("Ground");
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.1f, Ground);
+        
+    
         UpdateRotation();
         GetInputs();
         CheckVelocityLimit();

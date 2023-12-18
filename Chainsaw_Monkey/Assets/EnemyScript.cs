@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.Find("Player");
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponent<Animator>();
-        agent.destination = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        //agent.destination = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         
         //enemyAIController = new AIController(gameObject, player,3);
         aIControllerHolder = GameObject.Find("AIControllerHolder");
