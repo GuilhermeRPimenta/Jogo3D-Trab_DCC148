@@ -17,12 +17,17 @@ public class PlayerScript : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDirection;
     private Rigidbody rigidBody;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float walkSpeed = 20f;
+    [SerializeField] private float runningSpeed = 40f;
     [SerializeField] private float maxSpeed = 8f;
     [SerializeField] private float groundDrag = 5f;
     private float playerHeight = 1.7f;
     [SerializeField] private LayerMask Ground;
     private bool grounded;
+    public float staminaPoints;
+    public float defaultStamina = 10;
+    public float recoverStaminaTimer = 0;
+    public float minimumTimeToRecoverStamina = 5;
 
     //HP
     public float HP = 50;
@@ -42,6 +47,8 @@ public class PlayerScript : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.freezeRotation = true;
         Ground = LayerMask.GetMask("Ground");
+
+        staminaPoints = defaultStamina;
 
 
         enemy = GameObject.Find("scrake_circus");
@@ -63,7 +70,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     void FixedUpdate(){
-        UpdatePosition();
+        Locomotion();
     }
 
     void GetInputs(){
@@ -72,6 +79,8 @@ public class PlayerScript : MonoBehaviour
 
         mouseH += Input.GetAxis("Mouse X");
         mouseV += Input.GetAxis("Mouse Y");
+        if(mouseV < -45) mouseV = -45;
+        else if(mouseV > 45) mouseV = 45;
     }
     void UpdateRotation(){
         Quaternion rotX, rotY;
@@ -83,14 +92,56 @@ public class PlayerScript : MonoBehaviour
         playerCamera.transform.localRotation = cameraBaseOrientation * rotX;
     }
 
-    void UpdatePosition(){
-        
+    void Locomotion(){
         if(grounded) {rigidBody.drag = groundDrag;}
         else rigidBody.drag = 0;
+        if (Input.GetKey(KeyCode.LeftShift)){
+            if(staminaPoints >= 0.1f){
+                maxSpeed = runningSpeed;
+                Running();
+                staminaPoints -= Time.fixedDeltaTime;
+                if(staminaPoints < 0) staminaPoints = 0;
+                recoverStaminaTimer = 0;
+            }
+            else{
+                maxSpeed = walkSpeed;
+                Walking();
+                if(recoverStaminaTimer < minimumTimeToRecoverStamina){
+                    recoverStaminaTimer += Time.fixedDeltaTime;
+                }
+                
+            }
+        }
+        else{
+            maxSpeed = walkSpeed;
+            Walking();
+            if(recoverStaminaTimer < minimumTimeToRecoverStamina){
+                recoverStaminaTimer += Time.fixedDeltaTime;
+            }
+            
+        }
+        if(recoverStaminaTimer >= minimumTimeToRecoverStamina){
+            if(staminaPoints < defaultStamina){
+                staminaPoints += Time.fixedDeltaTime;
+            }
+            
+        }
+
+    }
+    void Walking(){
+        
+        /*if(grounded) {rigidBody.drag = groundDrag;}
+        else rigidBody.drag = 0;*/
 
         moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        rigidBody.AddForce(moveDirection * moveSpeed, ForceMode.Force);
+        rigidBody.AddForce(moveDirection * walkSpeed, ForceMode.Force);
 
+        
+    }
+
+    void Running(){
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        rigidBody.AddForce(moveDirection * runningSpeed, ForceMode.Force);
         
     }
 
