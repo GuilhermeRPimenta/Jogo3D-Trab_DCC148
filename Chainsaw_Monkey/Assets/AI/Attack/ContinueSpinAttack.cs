@@ -22,6 +22,7 @@ public class ContinueSpinAttack : BehaviourTreeNode
         if(aIController.spinAttackTimer >=aIController.spinAttackDuration){
             aIController.spinAttackTimer = 0;
             aIController.spinAttacking = false;
+            aIController.chainsawAttackSource.Stop();
             aIController.agent.speed = aIController.runningSpeed;
             aIController.enemyAnimator.SetInteger("State", 1);
         }

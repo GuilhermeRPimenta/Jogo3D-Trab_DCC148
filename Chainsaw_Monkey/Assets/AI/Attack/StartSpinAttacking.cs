@@ -11,6 +11,8 @@ public class StartSpinAttacking : BehaviourTreeNode
 
     public override bool process(){
         aIController.spinAttacking = true;
+        aIController.chainsawAttackSource.Play();
+        aIController.lookingAroundTimer = 0;
         return true;
     }
 }

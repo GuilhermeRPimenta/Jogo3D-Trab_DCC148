@@ -29,6 +29,7 @@ public class ResurrectLogic : BehaviourTreeNode
         foreach(Collider x in aIController.enemyColliders){
             x.enabled = true;
         }
+        aIController.chainsawMotorAudio.Play();
         
         return true;
     }

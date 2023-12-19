@@ -11,6 +11,9 @@ public class StartFrontAttacking : BehaviourTreeNode
 
     public override bool process(){
         aIController.frontAttacking = true;
+        aIController.chainsawAttackSource.Play();
+        aIController.lookingAroundTimer = 0;
+        aIController.lookingAround = false;
         return true;
     }
 }

@@ -24,6 +24,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private LayerMask Ground;
     private bool grounded;
 
+    //HP
+    public float HP = 50;
+
+    //ENEMY AI
+    public GameObject enemy;
+    public AIController[] enemyAIController;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +42,10 @@ public class PlayerScript : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.freezeRotation = true;
         Ground = LayerMask.GetMask("Ground");
+
+
+        enemy = GameObject.Find("scrake_circus");
+        enemyAIController = enemy.GetComponentsInChildren<AIController>();
 
         
     }
@@ -91,4 +101,16 @@ public class PlayerScript : MonoBehaviour
             rigidBody.velocity = new Vector3(velocityVector.x, rigidBody.velocity.y, velocityVector.z);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Chainsaw")){
+            if(enemyAIController[0].frontAttacking){
+                HP -= 15;
+            }
+            else if(enemyAIController[0].spinAttacking){
+                HP -= 10;
+            }
+        }
+    }   
 }

@@ -32,6 +32,7 @@ public class AIController : MonoBehaviour
     public float spinAttackTimer = 0;
     public float spinAttackDuration = 0.5f;
     public float spinAttackSpeed = 4.5f;
+    public GameObject chainsawAttackAudioHolder;
     
     //Stun
     public float SP;
@@ -65,12 +66,13 @@ public class AIController : MonoBehaviour
     public float resurrectDuration = 3;
     public float resurrectTimer = 0;
     public Collider[] enemyColliders;
-
-
-    
-
-
-    //END OF AI SPECIFIC VARIABLES
+    //END OF AI VARIABLES
+    public AudioSource chainsawAttackSource;
+    public AudioSource headAudio;
+    //AUDIO
+    public GameObject chainsawMotor;
+    public AudioSource chainsawMotorAudio;
+    //END OF AUDIO VARIABLES
     private BehaviourTreeNode mainTree;
 
     //CONSTRUCTOR
@@ -93,6 +95,11 @@ public class AIController : MonoBehaviour
         Ground = LayerMask.GetMask("Ground");
         HP = healthValue;
         enemyColliders = enemy.GetComponentsInChildren<Collider>();
+        chainsawAttackAudioHolder = GameObject.Find("ChainsawAttackSoundHolder");
+        chainsawAttackSource = chainsawAttackAudioHolder.GetComponent<AudioSource>();
+        headAudio = enemyHead.GetComponent<AudioSource>();
+        chainsawMotor = GameObject.Find("CHR_RArmPalm");
+        chainsawMotorAudio = chainsawMotor.GetComponent<AudioSource>();
 
     }
     public void BuildBehaviourTree()

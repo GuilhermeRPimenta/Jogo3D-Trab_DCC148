@@ -16,6 +16,8 @@ public class Kill : BehaviourTreeNode
         foreach(Collider x in aIController.enemyColliders){
             x.enabled = false;
         }
+        aIController.chainsawMotorAudio.Stop();
+        aIController.chainsawAttackSource.Stop();
 
         return true;
     }
