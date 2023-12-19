@@ -13,24 +13,29 @@ public class PlayerScript : MonoBehaviour
     private Quaternion cameraBaseOrientation;
 
     //Movement variables
+    public CharacterController playerController;
+    public Vector3 velocity;
+    public float gravity = 9.8f;
+    public GameObject feet;
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
-    private Rigidbody rigidBody;
-    [SerializeField] private float walkSpeed = 20f;
-    [SerializeField] private float runningSpeed = 40f;
-    [SerializeField] private float maxSpeed = 8f;
+    [SerializeField] private float walkSpeed = 3;
+    [SerializeField] private float runningSpeed = 6;
+    [SerializeField] private float maxSpeed = 3;
     [SerializeField] private float groundDrag = 5f;
     private float playerHeight = 1.7f;
     [SerializeField] private LayerMask Ground;
-    private bool grounded;
-    public float staminaPoints;
+    public bool grounded;
+    public float staminaPoints = 10;
     public float defaultStamina = 10;
     public float recoverStaminaTimer = 0;
     public float minimumTimeToRecoverStamina = 5;
 
     //HP
     public float HP = 50;
+    public float invicibilityTimer =0;
+    public float invicibilityDuration = 2;
 
     //ENEMY AI
     public GameObject enemy;
@@ -43,9 +48,10 @@ public class PlayerScript : MonoBehaviour
         Cursor.visible = false;
         baseOrientation = transform.localRotation; 
         cameraBaseOrientation = playerCamera.transform.localRotation;
+        playerController = gameObject.GetComponent<CharacterController>();
+        feet = GameObject.Find("Feet");
 
-        rigidBody = GetComponent<Rigidbody>();
-        rigidBody.freezeRotation = true;
+        
         Ground = LayerMask.GetMask("Ground");
 
         staminaPoints = defaultStamina;
@@ -60,22 +66,25 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.1f, Ground);
         
-    
+
         UpdateRotation();
         GetInputs();
-        CheckVelocityLimit();
+        Locomotion();
+        //CheckVelocityLimit();
+        invicibilityTimer += Time.deltaTime;
 
     }
 
     void FixedUpdate(){
-        Locomotion();
+        grounded = Physics.CheckSphere(feet.transform.position, 0.4f, Ground);
     }
 
     void GetInputs(){
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        moveDirection = transform.right * horizontalInput + transform.forward * verticalInput;
+        
 
         mouseH += Input.GetAxis("Mouse X");
         mouseV += Input.GetAxis("Mouse Y");
@@ -93,19 +102,21 @@ public class PlayerScript : MonoBehaviour
     }
 
     void Locomotion(){
-        if(grounded) {rigidBody.drag = groundDrag;}
-        else rigidBody.drag = 0;
+        
+        
+        if(grounded && velocity.y < 0){
+            velocity.y = -2;
+        }
+        
         if (Input.GetKey(KeyCode.LeftShift)){
             if(staminaPoints >= 0.1f){
                 maxSpeed = runningSpeed;
-                Running();
                 staminaPoints -= Time.fixedDeltaTime;
                 if(staminaPoints < 0) staminaPoints = 0;
                 recoverStaminaTimer = 0;
             }
             else{
                 maxSpeed = walkSpeed;
-                Walking();
                 if(recoverStaminaTimer < minimumTimeToRecoverStamina){
                     recoverStaminaTimer += Time.fixedDeltaTime;
                 }
@@ -114,7 +125,6 @@ public class PlayerScript : MonoBehaviour
         }
         else{
             maxSpeed = walkSpeed;
-            Walking();
             if(recoverStaminaTimer < minimumTimeToRecoverStamina){
                 recoverStaminaTimer += Time.fixedDeltaTime;
             }
@@ -126,42 +136,28 @@ public class PlayerScript : MonoBehaviour
             }
             
         }
+        playerController.Move(moveDirection * maxSpeed * Time.deltaTime);
+        velocity.y -= gravity * Time.deltaTime;
+        playerController.Move(velocity * Time.deltaTime);
 
     }
-    void Walking(){
-        
-        /*if(grounded) {rigidBody.drag = groundDrag;}
-        else rigidBody.drag = 0;*/
 
-        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        rigidBody.AddForce(moveDirection * walkSpeed, ForceMode.Force);
 
-        
-    }
+    
 
-    void Running(){
-        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        rigidBody.AddForce(moveDirection * runningSpeed, ForceMode.Force);
-        
-    }
-
-    void CheckVelocityLimit(){
-        Vector3 velocityVector = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
-        if(velocityVector.magnitude > maxSpeed){
-            velocityVector = velocityVector.normalized * maxSpeed;
-            rigidBody.velocity = new Vector3(velocityVector.x, rigidBody.velocity.y, velocityVector.z);
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(collision.gameObject.CompareTag("Chainsaw")){
-            if(enemyAIController[0].frontAttacking){
+        
+        if(hit.gameObject.tag == "Chainsaw"){
+            if(invicibilityTimer < invicibilityDuration) return;
+            invicibilityTimer = 0;
+            HP -= 10;
+            /*if(enemyAIController[0].frontAttacking){
                 HP -= 15;
             }
             else if(enemyAIController[0].spinAttacking){
                 HP -= 10;
-            }
+            }*/
         }
     }   
 }
