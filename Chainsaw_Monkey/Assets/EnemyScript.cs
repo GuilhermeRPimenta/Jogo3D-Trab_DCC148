@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
         enemyColliders = GetComponentsInChildren<Collider>();
 
         aIControllerHolder = GameObject.Find("AIControllerHolder");
-        enemyAIController = aIControllerHolder.AddComponent<AIController>();
+        enemyAIController = aIControllerHolder.GetComponent<AIController>();
         enemyAIController.DeclareAIVariables();
         enemyAIController.BuildBehaviourTree();
         

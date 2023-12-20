@@ -13,7 +13,7 @@ public class ContinueFrontAttack : BehaviourTreeNode
     public override bool process()
     {
         aIController.enemyAnimator.SetInteger("State", 2);
-        aIController.agent.speed = aIController.frontAttackSpeed;
+        aIController.agent.speed = 0;
         aIController.agent.destination = new Vector3(aIController.player.transform.position.x, aIController.player.transform.position.y -1.7f, aIController.player.transform.position.z);
         aIController.frontAttackTimer += Time.deltaTime;
         

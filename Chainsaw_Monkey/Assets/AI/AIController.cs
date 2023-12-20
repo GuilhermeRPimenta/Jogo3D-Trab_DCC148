@@ -22,15 +22,15 @@ public class AIController : MonoBehaviour
     public float runningSpeed = 4.0f;
 
     //Attack
-    public float attackRange = 2.5f;
-    public float frontAttackAngle = 25;
+    public float attackRange = 1.0f;
+    public float frontAttackAngle = 15;
     public float frontAttackTimer = 0;
-    public float frontAttackDuration = 0.7f;
+    public float frontAttackDuration = 0.8f;
     public float frontAttackSpeed = 6;
     public bool frontAttacking = false;
     public bool spinAttacking = false;
     public float spinAttackTimer = 0;
-    public float spinAttackDuration = 0.5f;
+    public float spinAttackDuration = 0.8f;
     public float spinAttackSpeed = 4.5f;
     public GameObject chainsawAttackAudioHolder;
     
@@ -54,7 +54,7 @@ public class AIController : MonoBehaviour
     public bool lookedAround = false;
     public bool lookingAround = false;
     public float lookingAroundTimer = 0;
-    public float lookingAroundDuration = 4.8f;
+    public float lookingAroundDuration = 2.5f;
 
     //Dead
     public bool dead = false;

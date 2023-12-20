@@ -84,6 +84,10 @@ public class PlayerScript : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         moveDirection = transform.right * horizontalInput + transform.forward * verticalInput;
+        if(horizontalInput != 0 && verticalInput != 0){
+            horizontalInput = horizontalInput * 0.70710678f;
+            verticalInput = verticalInput * 0.70710678f;
+        }
         
 
         mouseH += Input.GetAxis("Mouse X");
@@ -145,7 +149,7 @@ public class PlayerScript : MonoBehaviour
 
     
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    /*void OnControllerColliderHit(ControllerColliderHit hit)
     {
         
         if(hit.gameObject.tag == "Chainsaw"){
@@ -157,7 +161,7 @@ public class PlayerScript : MonoBehaviour
             }
             else if(enemyAIController[0].spinAttacking){
                 HP -= 10;
-            }*/
+            }
         }
-    }   
+    }   */
 }
