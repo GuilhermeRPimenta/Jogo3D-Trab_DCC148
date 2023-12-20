@@ -894,39 +894,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.2, y: 0.2, z: 1}
   m_Center: {x: -2.45, y: 0.4, z: 0.2}
---- !u!54 &767499070
-Rigidbody:
+--- !u!114 &767499070
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767499067}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcda73c8d663bfa4288ca89ce23f8b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAIController: {fileID: 852045723}
+  enemy: {fileID: 0}
+  playerScript: {fileID: 1254436441}
 --- !u!1 &768910820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852045722}
+  - component: {fileID: 852045723}
   m_Layer: 7
   m_Name: AIControllerHolder
   m_TagString: Untagged
@@ -1085,6 +1074,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1127611117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &852045723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852045721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef5f13048393e544bc15bd69cf7c78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  enemySpine: {fileID: 0}
+  enemyAnimator: {fileID: 0}
+  agent: {fileID: 0}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 0
+  groundLayer: 6
+  HP: 0
+  walkingSpeed: 2
+  runningSpeed: 4
+  attackRange: 1
+  frontAttackAngle: 15
+  frontAttackTimer: 0
+  frontAttackDuration: 1.2
+  frontAttackSpeed: 6
+  frontAttacking: 0
+  spinAttacking: 0
+  spinAttackTimer: 0
+  spinAttackDuration: 0.5
+  spinAttackSpeed: 4.5
+  chainsawAttackAudioHolder: {fileID: 0}
+  SP: 0
+  firstStunPoints: 50
+  secondStunPoints: 150
+  stunTimer: 0
+  stunDuration: 1.5
+  enemyLayer: 0
+  enemyHead: {fileID: 0}
+  maxSightDistance: 50
+  heardSound: 0
+  soundPosition: {x: 0, y: 0, z: 0}
+  lookedAround: 0
+  lookingAround: 0
+  lookingAroundTimer: 0
+  lookingAroundDuration: 2.5
+  dead: 0
+  resurrecting: 0
+  resurrected: 0
+  healthValue: 200
+  deathDuration: 10
+  deathTimer: 0
+  resurrectDuration: 3
+  resurrectTimer: 0
+  enemyColliders: []
+  chainsawAttackSource: {fileID: 0}
+  headAudio: {fileID: 0}
+  chainsawMotor: {fileID: 0}
+  chainsawMotorAudio: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1482,7 @@ GameObject:
   - component: {fileID: 1254436444}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
