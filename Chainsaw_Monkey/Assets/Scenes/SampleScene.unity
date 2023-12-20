@@ -339,9 +339,10 @@ GameObject:
   m_Component:
   - component: {fileID: 172514526}
   - component: {fileID: 172514527}
+  - component: {fileID: 172514528}
   m_Layer: 7
   m_Name: Chainsaw_Motor_Hitbox_Holder
-  m_TagString: Untagged
+  m_TagString: Chainsaw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +383,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1, y: 1.9, z: 1.4}
   m_Center: {x: 0.1, y: -0.25, z: 0.1}
+--- !u!54 &172514528
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172514525}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &251803217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2732560838924540363, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
@@ -604,7 +632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -611.249, y: -267.7517}
+  m_AnchoredPosition: {x: -504.24884, y: -279.95175}
   m_SizeDelta: {x: 129.492, y: 73.9954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415509243
@@ -828,6 +856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 767499068}
   - component: {fileID: 767499069}
+  - component: {fileID: 767499070}
   m_Layer: 7
   m_Name: Chainsaw_Saw_Hitbox_Holder
   m_TagString: Chainsaw
@@ -871,6 +900,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.2, y: 0.2, z: 1}
   m_Center: {x: -2.45, y: 0.4, z: 0.2}
+--- !u!54 &767499070
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767499067}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &768910820
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -594.6, y: -295.5}
+  m_AnchoredPosition: {x: -487.5998, y: -307.7}
   m_SizeDelta: {x: 90.1819, y: 18.4988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768910822
@@ -1373,7 +1429,6 @@ GameObject:
   - component: {fileID: 1254436440}
   - component: {fileID: 1254436441}
   - component: {fileID: 1254436444}
-  - component: {fileID: 1254436443}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1390,11 +1445,12 @@ Transform:
   m_GameObject: {fileID: 1254436439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 47.82, y: 1.65, z: 11.6}
+  m_LocalPosition: {x: 60.67, y: 1.58, z: 11.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
+  - {fileID: 2108041694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1254436441
@@ -1411,44 +1467,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyeSpeed: 2
   playerCamera: {fileID: 963194225}
-  moveSpeed: 35
+  playerController: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  gravity: 9.8
+  feet: {fileID: 0}
+  walkSpeed: 3
+  runningSpeed: 6
   maxSpeed: 4
   groundDrag: 5
   Ground:
     serializedVersion: 2
     m_Bits: 0
+  grounded: 0
+  staminaPoints: 10
+  defaultStamina: 10
+  recoverStaminaTimer: 0
+  minimumTimeToRecoverStamina: 5
   HP: 50
+  invicibilityTimer: 0
+  invicibilityDuration: 2
   enemy: {fileID: 0}
   enemyAIController: []
---- !u!54 &1254436443
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254436439}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!136 &1254436444
-CapsuleCollider:
+--- !u!143 &1254436444
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1465,11 +1506,14 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  serializedVersion: 3
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.6, z: 0}
+  m_Radius: 0.53
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: -0.61, z: 0}
 --- !u!1 &1272242455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -611.249, y: -267.7517}
+  m_AnchoredPosition: {x: -504.24884, y: -279.95175}
   m_SizeDelta: {x: 129.492, y: 73.9954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272242457
@@ -2346,7 +2390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -611.249, y: -267.7517}
+  m_AnchoredPosition: {x: -504.24884, y: -279.95175}
   m_SizeDelta: {x: 166.4897, y: 110.9931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981060486
@@ -2773,6 +2817,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1901085745}
   m_SourcePrefab: {fileID: 100100000, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+--- !u!1 &2108041693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108041694}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108041694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108041693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1254436440}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141504874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2189479974252490496, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
