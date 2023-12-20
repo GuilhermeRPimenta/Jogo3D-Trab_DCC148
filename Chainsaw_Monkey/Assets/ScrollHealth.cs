@@ -25,7 +25,7 @@ public class ScrollHealth : MonoBehaviour
 
     void Update()
     {
-        scrollSpeed = 20 - playerScript.staminaPoints * 1f;
+        scrollSpeed = 26 - playerScript.staminaPoints * 1.8f;
         statusGameObjectImage.sprite = statusText;
         colorBar.material.mainTextureOffset = colorBar.material.mainTextureOffset + new Vector2(Time.deltaTime * (-scrollSpeed / 10), 0);
 

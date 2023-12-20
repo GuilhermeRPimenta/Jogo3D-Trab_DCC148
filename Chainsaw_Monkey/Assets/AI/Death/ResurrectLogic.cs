@@ -24,6 +24,8 @@ public class ResurrectLogic : BehaviourTreeNode
         aIController.heardSound = false;
         aIController.lookedAround = false;
         aIController.lookingAround = false;
+        aIController.frontAttacking = false;
+        aIController.spinAttacking = false;
         aIController.enemyAnimator.SetInteger("State", 0);
         aIController.agent.destination = aIController.enemy.transform.position;
         foreach(Collider x in aIController.enemyColliders){
