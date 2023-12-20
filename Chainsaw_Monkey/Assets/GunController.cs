@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GunController : MonoBehaviour
 {
@@ -6,7 +7,13 @@ public class GunController : MonoBehaviour
     public float range = 100f;
 
     public Camera fpsCam;
-    public ParticleSystem muzzleFlash;
+    public ParticleSystem particleSystem;
+    public AudioSource sound;
+
+    void Start()
+    {
+        particleSystem.Stop();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,7 +26,9 @@ public class GunController : MonoBehaviour
 
     void Shoot()
     {
-        muzzleFlash.Play();
+        particleSystem.Play();
+        sound.Play();
+
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
