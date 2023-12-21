@@ -33,12 +33,13 @@ public class PlayerScript : MonoBehaviour
     public float recoverStaminaTimer = 0;
     public float minimumTimeToRecoverStamina = 5;
     public CharacterController characterController;
-    public bool dead = false;
 
     //HP
     public float HP = 50;
     public float invicibilityTimer =0;
     public float invicibilityDuration = 0.5f;
+    public bool hit = false;
+    public bool dead = false;
 
     //ENEMY AI
     public GameObject enemy;
@@ -93,6 +94,9 @@ public class PlayerScript : MonoBehaviour
         UpdateRotation();
         //CheckVelocityLimit();
         invicibilityTimer += Time.deltaTime;
+        if(invicibilityTimer >= invicibilityDuration && hit){
+            hit = false;
+        }
         if(HP <=0){
             dead = true;
             if(!playedDeathScream){

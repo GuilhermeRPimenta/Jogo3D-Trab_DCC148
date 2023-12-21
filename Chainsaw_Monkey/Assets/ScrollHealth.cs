@@ -14,7 +14,9 @@ public class ScrollHealth : MonoBehaviour
     public GameObject statusGameObject;
     public Image statusGameObjectImage;
     public PlayerScript playerScript;
-    
+    public Image bloodImage;
+    public float previousHP;
+    public float bloodAlpha = 0;
 
     void Start()
     {
@@ -24,11 +26,12 @@ public class ScrollHealth : MonoBehaviour
         //statusGameObject.GetComponent<Image>().sprite = status;
         statusGameObjectImage = statusGameObject.GetComponent<Image>();
         statusText = healthStatus[0];
+        bloodImage.color = new Color(1,1,1,0.0f);
 
     }
 
     void Update()
-    {
+    {   
         scrollSpeed = 26 - playerScript.staminaPoints * 1.8f;
         statusGameObjectImage.sprite = statusText;
         colorBar.material.mainTextureOffset = colorBar.material.mainTextureOffset + new Vector2(Time.deltaTime * (-scrollSpeed / 10), 0);
@@ -48,6 +51,16 @@ public class ScrollHealth : MonoBehaviour
                 colorBar.rectTransform.localScale = new Vector2(1f,0.1f);
                 heartRate.rectTransform.localScale = new Vector2(1f,0.1f);
             }
+        }
+        if(playerScript.hit){
+            bloodAlpha += Time.deltaTime;
+            bloodAlpha = Mathf.Clamp(bloodAlpha, 0 ,0.5f);
+            bloodImage.color = new Color(1,1,1,bloodAlpha);
+        }
+        else{
+            bloodAlpha -= Time.deltaTime;
+            bloodAlpha = Mathf.Clamp(bloodAlpha, 0 ,0.5f);
+            bloodImage.color = new Color(1,1,1,bloodAlpha);
         }
     }
 }

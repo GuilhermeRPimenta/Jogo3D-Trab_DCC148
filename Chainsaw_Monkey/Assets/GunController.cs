@@ -9,10 +9,12 @@ public class GunController : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem particleSystem;
     public AudioSource sound;
+    public AIController enemyAIController;
 
     void Start()
     {
         particleSystem.Stop();
+        
     }
 
     // Update is called once per frame
@@ -32,13 +34,16 @@ public class GunController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
-            EnemyScript target = hit.transform.GetComponent<EnemyScript>();
-            Debug.Log(target);
-            if (target != null)
-            {
-                target.TakeDamage(damage);
+            //Debug.Log(hit.transform.name);
+            //EnemyScript target = hit.transform.GetComponent<EnemyScript>();
+            //Debug.Log(target);
+            if (hit.transform.CompareTag("Enemy")){
+                Debug.Log("fffff");
+                enemyAIController.HP -= damage;
             }
+            
+                
+            
         }
     }
 }
