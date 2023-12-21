@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollHealth : MonoBehaviour
-{
+{   
+    
     public Sprite statusText;
     public Image colorBar;
+    public Image heartRate;
     public float scrollSpeed;
     public Sprite[] healthStatus;
     public GameObject statusGameObject;
     public Image statusGameObjectImage;
     public PlayerScript playerScript;
+    
 
     void Start()
     {
+        
         colorBar = this.GetComponent<Image>();
         colorBar.color = new Color32(0,255,0,255);
         //statusGameObject.GetComponent<Image>().sprite = status;
@@ -40,6 +44,10 @@ public class ScrollHealth : MonoBehaviour
         else{
             colorBar.color = new Color32(255,0,0,255);
             statusText = healthStatus[1];
+            if(playerScript.HP <=0 ){
+                colorBar.rectTransform.localScale = new Vector2(1f,0.1f);
+                heartRate.rectTransform.localScale = new Vector2(1f,0.1f);
+            }
         }
     }
 }
