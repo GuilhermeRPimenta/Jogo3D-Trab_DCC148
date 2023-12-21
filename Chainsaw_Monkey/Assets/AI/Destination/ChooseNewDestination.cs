@@ -13,9 +13,9 @@ public class ChooseNewDestination : BehaviourTreeNode
         bool validPosition = false;
         RaycastHit hit;
         do{
-            float randX = Random.Range(10f,50f);
-            int randY = Random.Range(1,5);
-            float randZ = Random.Range(10f,50f);
+            float randX = Random.Range(-20f,50f);
+            int randY = Random.Range(1,15);
+            float randZ = Random.Range(-400f,50f);
             Ray ray = new Ray(new Vector3(randX,randY,randZ), Vector3.down);
             if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
                 if(hit.collider.gameObject.layer == aIController.groundLayer){
