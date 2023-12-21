@@ -12,6 +12,7 @@ public class ChainsawScript : MonoBehaviour
     void OnTriggerEnter(Collider hit){
         if(hit.CompareTag("Player")){
             if (playerScript.invicibilityTimer < playerScript.invicibilityDuration) return;
+            playerScript.gutsAudio.Play();
             if(enemyAIController.frontAttacking){
                 playerScript.HP -= 15;
                 playerScript.invicibilityTimer = 0;
