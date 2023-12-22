@@ -8,11 +8,20 @@ public class GeneratorScript : MonoBehaviour
     public GameObject door;
     public Light generatorLight;
     public AudioSource sound;
+    public AIController enemyAIController;
+    public GameObject enemyAIHolder;
+
+    void Start(){
+        enemyAIHolder = GameObject.Find("AIControllerHolder");
+        enemyAIController = enemyAIHolder.GetComponent<AIController>(); 
+    }
     public void Activate()
     {
         if(running) return;
 
         running = true;
+        enemyAIController.heardSound = true;
+        enemyAIController.soundPosition = transform.position;
         generatorLight.color = Color.green;
         // sound.Play();
         
