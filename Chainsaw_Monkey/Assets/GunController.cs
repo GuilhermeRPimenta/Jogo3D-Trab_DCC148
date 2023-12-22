@@ -22,6 +22,10 @@ public class GunController : MonoBehaviour
         {
             Shoot();
         }
+
+        if(Input.GetButtonDown("Interact")){
+            Interact();
+        }
     }
 
     void Shoot()
@@ -41,4 +45,20 @@ public class GunController : MonoBehaviour
             }
         }
     }
+
+    void Interact()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+            GeneratorScript target = hit.transform.GetComponent<GeneratorScript>();
+            Debug.Log(target);
+            if (target != null)
+            {
+                target.Activate();
+            }
+        }
+    }
+
 }
