@@ -12,20 +12,27 @@ public class ChooseNewDestination : BehaviourTreeNode
     public override bool process(){
         bool validPosition = false;
         RaycastHit hit;
+        int randFloor = Random.Range(0,2);
+            int randY;
+            if(randFloor == 0) randY = 1;
+            else randY = 4;
         do{
-            float randX = Random.Range(-11f,25f);
-            int randY = Random.Range(1,10);
-            float randZ = Random.Range(-35f,10f);
+            float randX = Random.Range(-12.5f,24f);
+            
+            float randZ = Random.Range(-36f,12f);
             Ray ray = new Ray(new Vector3(randX,randY,randZ), Vector3.down);
             if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
                 if(hit.collider.gameObject.layer == aIController.groundLayer){
                     validPosition = true;   
                 }
             }
+            //Debug.Log(aIController.agent.destination);
         } while(!validPosition);
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
         aIController.agent.speed = aIController.walkingSpeed;
         aIController.enemyAnimator.SetInteger("State", 0);
+
+        
 
         aIController.lookingAround = false;
         aIController.lookedAround = false;

@@ -33,6 +33,10 @@ public class FollowSound : BehaviourTreeNode
         aIController.agent.speed = aIController.runningSpeed;
         aIController.enemyAnimator.SetInteger("State", 1);
         aIController.heardSound = false;
+
+        if(!aIController.headAudio.isPlaying){
+            aIController.headAudio.Play();
+        }
         //Debug.Log(aIController.agent.destination);
         return true;
     }
