@@ -11,9 +11,9 @@ public class CheckSoundNearby : BehaviourTreeNode
 
     public override bool process(){
         if(aIController.playerScript.isRunning  
-        && Mathf.Abs(aIController.enemy.transform.position.x - aIController.player.transform.position.x) < 30
+        && Mathf.Abs(aIController.enemy.transform.position.x - aIController.player.transform.position.x) < 10
         && Mathf.Abs(aIController.enemy.transform.position.y - aIController.player.transform.position.y) < 3
-        && Mathf.Abs(aIController.enemy.transform.position.x - aIController.player.transform.position.x) <30){
+        && Mathf.Abs(aIController.enemy.transform.position.x - aIController.player.transform.position.x) <10){
             aIController.soundPosition = aIController.player.transform.position;
             aIController.heardSound = true;
         }
