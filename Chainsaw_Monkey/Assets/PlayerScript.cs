@@ -54,6 +54,9 @@ public class PlayerScript : MonoBehaviour
     public bool playingFeetAudio = false;
     public AudioClip walkingAudio;
     public AudioClip runningAudio;
+    public AudioClip breathingAudio;
+    public AudioClip exhaustedAudio;
+    public AudioClip dyingAudio;
     
     // Start is called before the first frame update
     void Start()
@@ -94,12 +97,23 @@ public class PlayerScript : MonoBehaviour
         UpdateRotation();
         //CheckVelocityLimit();
         invicibilityTimer += Time.deltaTime;
-        if(invicibilityTimer >= invicibilityDuration && hit){
-            hit = false;
+        if(invicibilityTimer >= invicibilityDuration){
+            invicibilityTimer = invicibilityDuration;
+            if(hit){
+                hit = false;
+            }
         }
+        /*if(invicibilityTimer >= invicibilityDuration && hit){
+            hit = false;
+        }*/
         if(HP <=0){
             dead = true;
             if(!playedDeathScream){
+                if(headAudio.isPlaying){
+                    headAudio.Stop();
+                }
+                headAudio.loop = false;
+                headAudio.clip = dyingAudio;
                 headAudio.Play();
                 playedDeathScream = true;
             }
@@ -112,6 +126,19 @@ public class PlayerScript : MonoBehaviour
                 camPos.y =  camPos.y -1f * Time.deltaTime;
                 playerCamera.transform.localPosition = new Vector3(camPos.x, camPos.y, camPos.z);
             }
+        }
+        if(staminaPoints <5 && staminaPoints >=2 && !dead  && headAudio.clip != breathingAudio){
+            headAudio.clip = breathingAudio;
+            if(!headAudio.isPlaying) headAudio.Play();
+            
+        }
+        else if(staminaPoints<2 && !dead && headAudio.clip != exhaustedAudio){
+            headAudio.clip = exhaustedAudio;
+            if(!headAudio.isPlaying) headAudio.Play();
+        }
+        else if(staminaPoints >= 5 && !dead){
+            headAudio.clip = null;
+            headAudio.Stop();
         }
 
     }

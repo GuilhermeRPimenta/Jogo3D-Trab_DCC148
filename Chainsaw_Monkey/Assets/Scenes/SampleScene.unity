@@ -6321,11 +6321,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 36028a25a1638ad4d9635a5f6c3a0819, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6882,6 +6882,9 @@ MonoBehaviour:
   playingFeetAudio: 0
   walkingAudio: {fileID: 8300000, guid: 700f2378e76394e49a6194295f000067, type: 3}
   runningAudio: {fileID: 8300000, guid: 2926c486421d7c042bfa86cdae21f215, type: 3}
+  breathingAudio: {fileID: 8300000, guid: 6c603dc3a351f2245896313d2aff3edb, type: 3}
+  exhaustedAudio: {fileID: 8300000, guid: de10fd3b2d15010459bbee7b82688c84, type: 3}
+  dyingAudio: {fileID: 8300000, guid: 36028a25a1638ad4d9635a5f6c3a0819, type: 3}
 --- !u!143 &1254436444
 CharacterController:
   m_ObjectHideFlags: 0
