@@ -3,7 +3,8 @@ using System.Collections;
 
 public class GunController : MonoBehaviour
 {
-    public float damage = 10f;
+    public float bodyDamage = 10f;
+    public float headDamage = 20f;
     public float range = 100f;
 
     public Camera fpsCam;
@@ -38,8 +39,12 @@ public class GunController : MonoBehaviour
             //EnemyScript target = hit.transform.GetComponent<EnemyScript>();
             //Debug.Log(target);
             if (hit.transform.CompareTag("Enemy")){
-                Debug.Log("fffff");
-                enemyAIController.HP -= damage;
+                enemyAIController.HP -= bodyDamage;
+                enemyAIController.SP -= bodyDamage;
+            }
+            else if(hit.transform.CompareTag("EnemyHead")){
+                enemyAIController.HP -= headDamage;
+                enemyAIController.SP -= headDamage;
             }
             
                 

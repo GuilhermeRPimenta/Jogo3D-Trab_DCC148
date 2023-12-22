@@ -5391,8 +5391,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172514526}
-  - component: {fileID: 172514527}
-  - component: {fileID: 172514528}
   m_Layer: 7
   m_Name: Chainsaw_Motor_Hitbox_Holder
   m_TagString: Chainsaw
@@ -5415,54 +5413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1286046748}
   m_LocalEulerAnglesHint: {x: 0, y: 7.6, z: 9.97}
---- !u!65 &172514527
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172514525}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.9, z: 1.4}
-  m_Center: {x: 0.1, y: -0.25, z: 0.1}
---- !u!54 &172514528
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172514525}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &251803217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2732560838924540363, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
@@ -6029,8 +5979,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.32, y: 3.89, z: 2.88}
-  m_Center: {x: -4.69, y: 0.4, z: 0.2}
+  m_Size: {x: 9.22, y: 1.27, z: 1.52}
+  m_Center: {x: -4.43, y: 0.4, z: 0.2}
 --- !u!114 &767499070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6229,8 +6179,8 @@ MonoBehaviour:
   HP: 0
   walkingSpeed: 2
   runningSpeed: 4
-  attackRange: 1.5
-  frontAttackAngle: 15
+  attackRange: 1.3
+  frontAttackAngle: 27.4
   frontAttackTimer: 0
   frontAttackDuration: 1.2
   frontAttackSpeed: 6
@@ -6739,11 +6689,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  playerScript: {fileID: 1254436441}
 --- !u!4 &1127611117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
   m_PrefabInstance: {fileID: 2073494266}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1127611119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127611108}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.37, y: 12.36, z: 7.44}
+  m_Center: {x: 0, y: 6, z: 2.75}
 --- !u!1 &1139219647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2124507994420632348, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
@@ -6929,13 +6901,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.39
+  m_Height: 2
   m_Radius: 0.53
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.61, z: 0}
+  m_Center: {x: 0, y: -0.63, z: 0}
 --- !u!1 &1272242455
 GameObject:
   m_ObjectHideFlags: 0
@@ -7562,11 +7534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d85cac1681963459b1e85d04af7025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  bodyDamage: 10
+  headDamage: 20
   range: 100
   fpsCam: {fileID: 963194227}
   particleSystem: {fileID: 105481968}
   sound: {fileID: 1085426849}
+  enemyAIController: {fileID: 852045723}
 --- !u!1 &1750158302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1066218371796413492, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
@@ -8246,9 +8220,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -8374454290833585118, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -8021377940821258470, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8021377940821258470, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -7494756702172966348, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
@@ -8314,6 +8296,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1239713032003720443, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      propertyPath: m_TagString
+      value: EnemyHead
+      objectReference: {fileID: 0}
     - target: {fileID: -1066218371796413492, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -8361,6 +8347,10 @@ PrefabInstance:
     - target: {fileID: 1766677408326895565, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766677408326895565, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2124507994420632348, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
@@ -8410,6 +8400,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8508632941892537944, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8604323155654409762, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -8449,6 +8443,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1127611115}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1127611119}
     - targetCorrespondingSourceObject: {fileID: 1766677408326895565, guid: a555f38679ba03b4aaa929c45378ded5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1049720608}
