@@ -10,7 +10,7 @@ public class GunController : MonoBehaviour
 
     public Camera fpsCam;
     public ParticleSystem particleSystem;
-    public AudioSource sound;
+    public AudioSource[] sound;
     public AIController enemyAIController;
     public float shootTimer = 0.8f;
     public float shootDuration = 0.8f;
@@ -21,10 +21,13 @@ public class GunController : MonoBehaviour
     public float reloadTimer = 2;
     public float reloadDuration = 2;
     public TextMeshProUGUI ammoDisplay;
+    public AudioClip reloadAudio;
+    public AudioClip shootAudio;
 
     void Start()
     {
         particleSystem.Stop();
+        sound = GetComponentsInChildren<AudioSource>();
         
     }
 
@@ -42,6 +45,7 @@ public class GunController : MonoBehaviour
         {
             if(shootTimer >= shootDuration && magAmmo >0 && !isReloading){
                 Shoot();
+                
                 shootTimer = 0;
                 shot = true;
                 magAmmo -= 1;
@@ -49,6 +53,8 @@ public class GunController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.R) && magAmmo !=12 && remainingAmmo !=0){
             isReloading = true;
+            sound[0].clip = reloadAudio;
+            sound[0].Play();
             int subtractedAmmo = 12 - magAmmo;
             if(remainingAmmo < subtractedAmmo ){
                 magAmmo = remainingAmmo;
@@ -80,7 +86,8 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         particleSystem.Play();
-        sound.Play();
+        sound[0].clip = shootAudio;
+        sound[0].Play();
 
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
