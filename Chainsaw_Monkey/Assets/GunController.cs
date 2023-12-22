@@ -11,6 +11,9 @@ public class GunController : MonoBehaviour
     public ParticleSystem particleSystem;
     public AudioSource sound;
     public AIController enemyAIController;
+    public float shootTimer = 0.8f;
+    public float shootDuration = 0.8f;
+    public bool shot = false;
 
     void Start()
     {
@@ -21,9 +24,21 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+            shootTimer += Time.deltaTime;
+            if(shootTimer >= shootDuration){
+                shot = false;
+                shootTimer = shootDuration;
+            }
+        
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            if(shootTimer >= shootDuration){
+                Shoot();
+                shootTimer = 0;
+                shot = true;
+            }
+            
         }
     }
 
