@@ -51,6 +51,7 @@ public class GunController : MonoBehaviour
                 magAmmo -= 1;
             }
         }
+        
         if(Input.GetKeyDown(KeyCode.R) && magAmmo !=12 && remainingAmmo !=0){
             isReloading = true;
             sound[0].clip = reloadAudio;
@@ -78,6 +79,10 @@ public class GunController : MonoBehaviour
         }
 
         ammoDisplay.SetText($"{magAmmo} / {remainingAmmo}");
+
+        if(Input.GetButtonDown("Interact")){
+            Interact();
+        }
     }
 
     void FixedUpdate(){
@@ -128,4 +133,20 @@ public class GunController : MonoBehaviour
         transform.localPosition = gunPos;
         reloadTimer += Time.deltaTime;
     }
+    
+    void Interact()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+            GeneratorScript target = hit.transform.GetComponent<GeneratorScript>();
+            Debug.Log(target);
+            if (target != null)
+            {
+                target.Activate();
+            }
+        }
+    }
+
 }
