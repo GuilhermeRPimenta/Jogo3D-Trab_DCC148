@@ -38,7 +38,7 @@ public class GeneratorScript : MonoBehaviour
         sound.Play();
         enemyAIController.soundPosition = transform.position;
         generatorLight.color = Color.green;
-        // sound.Play();
+        
         
         GameObject[] generators = GameObject.FindGameObjectsWithTag("Generator");
         foreach (GameObject generator in generators){

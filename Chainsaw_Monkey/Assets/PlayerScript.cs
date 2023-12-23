@@ -25,7 +25,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float runningSpeed = 6;
     public bool isRunning = false;
     [SerializeField] private float maxSpeed = 3;
-    [SerializeField] private float groundDrag = 5f;
     private float playerHeight = 1.7f;
     [SerializeField] private LayerMask Ground;
     public bool grounded;
@@ -100,7 +99,7 @@ public class PlayerScript : MonoBehaviour
             Locomotion();
         }
         UpdateRotation();
-        //CheckVelocityLimit();
+        
         invicibilityTimer += Time.deltaTime;
         if(invicibilityTimer >= invicibilityDuration){
             invicibilityTimer = invicibilityDuration;
@@ -108,9 +107,7 @@ public class PlayerScript : MonoBehaviour
                 hit = false;
             }
         }
-        /*if(invicibilityTimer >= invicibilityDuration && hit){
-            hit = false;
-        }*/
+        
         if(HP <=0){
             dead = true;
             Cursor.lockState = CursorLockMode.None;
@@ -252,22 +249,4 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-
-    
-
-    /*void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        
-        if(hit.gameObject.tag == "Chainsaw"){
-            if(invicibilityTimer < invicibilityDuration) return;
-            invicibilityTimer = 0;
-            HP -= 10;
-            /*if(enemyAIController[0].frontAttacking){
-                HP -= 15;
-            }
-            else if(enemyAIController[0].spinAttacking){
-                HP -= 10;
-            }
-        }
-    }   */
 }

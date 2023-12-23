@@ -15,19 +15,8 @@ public class FollowSound : BehaviourTreeNode
         Vector3 soundToEnemy;
         ray = new Ray(aIController.soundPosition, Vector3.down);
             soundToEnemy = (aIController.soundPosition - aIController.enemy.transform.position).normalized * 2;
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity))//{
-                /*if(hit.collider.gameObject.layer == aIController.groundLayer){
-                    validPosition = true;   
-                }*/ 
-            //}
-        /*do{
-            
-            n++;
-        }while(!validPosition && n< 50);*/
-        /*if(validPosition){
-        aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
-
-        }*/
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+                
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
 
         aIController.agent.speed = aIController.runningSpeed;
@@ -37,7 +26,7 @@ public class FollowSound : BehaviourTreeNode
         if(!aIController.headAudio.isPlaying){
             aIController.headAudio.Play();
         }
-        //Debug.Log(aIController.agent.destination);
+        
         return true;
     }
 }

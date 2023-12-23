@@ -18,7 +18,7 @@ public class CheckIfPlayerIsVisible : BehaviourTreeNode
         if (Physics.Raycast(ray, out hit, aIController.maxSightDistance)){
             if (hit.collider.gameObject.layer == aIController.enemyLayer){
                 float headToPlayerAngle = Vector3.Angle(-aIController.enemyHead.transform.up, playerToEnemyDirection);
-                //Debug.Log(headToPlayerAngle);
+                
                 if(headToPlayerAngle < 80){
                     return true;
                 }

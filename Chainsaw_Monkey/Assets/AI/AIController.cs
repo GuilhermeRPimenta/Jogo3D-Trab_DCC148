@@ -78,13 +78,6 @@ public class AIController : MonoBehaviour
     //END OF AUDIO VARIABLES
     private BehaviourTreeNode mainTree;
 
-    //CONSTRUCTOR
-    /*public AIController(){
-        this.player = GameObject.Find("Player");
-        this.enemy = GameObject.Find("scrake_circus");
-        this.agent = this.player.GetComponent<NavMeshAgent>();
-        //this.number = number;
-    }*/
     
     public void DeclareAIVariables(){
         player = GameObject.Find("Player");
@@ -223,20 +216,14 @@ public class AIController : MonoBehaviour
         HPManagement.addChild(new Kill(this));
         //END OF HP MANAGEMENT TREE
 
-        //ALIVE OR DEAD TREE
+        //ALIVE MAIN TREE
         mainTree = new SelectorNode();
         mainTree.addChild(HPManagement);
         mainTree.addChild(deathTree);
         mainTree.addChild(aliveActionSeletcor);
-        //END OF ALIVE OR DEAD TREE
+        //END OF MAIN TREE
 
         
-
-        //MAIN TREE
-        /*mainTree = new SelectorNode();
-        mainTree.addChild(HPManagement);
-        mainTree.addChild(aliveOrDead);*/
-        //END OF MAIN TREE
 
     }
 
