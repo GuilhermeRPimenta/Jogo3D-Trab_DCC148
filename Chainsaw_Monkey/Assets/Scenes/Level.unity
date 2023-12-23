@@ -31861,7 +31861,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   gravity: 9.8
   feet: {fileID: 0}
-  walkSpeed: 4
+  walkSpeed: 3
   runningSpeed: 8
   isRunning: 0
   maxSpeed: 4
@@ -31877,7 +31877,7 @@ MonoBehaviour:
   characterController: {fileID: 0}
   HP: 50
   invicibilityTimer: 0
-  invicibilityDuration: 0.5
+  invicibilityDuration: 0.8
   hit: 0
   dead: 0
   enemy: {fileID: 0}
@@ -31894,6 +31894,7 @@ MonoBehaviour:
   exhaustedAudio: {fileID: 8300000, guid: de10fd3b2d15010459bbee7b82688c84, type: 3}
   dyingAudio: {fileID: 8300000, guid: 36028a25a1638ad4d9635a5f6c3a0819, type: 3}
   restartManager: {fileID: 0}
+  deathTimer: 0
 --- !u!4 &954802787
 Transform:
   m_ObjectHideFlags: 0
@@ -43947,7 +43948,7 @@ MonoBehaviour:
   walkingSpeed: 5
   runningSpeed: 5
   attackRange: 1.57
-  frontAttackAngle: 27.4
+  frontAttackAngle: 15.7
   frontAttackTimer: 0
   frontAttackDuration: 1.2
   frontAttackSpeed: 6
@@ -45504,8 +45505,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.73, y: 0.82, z: 1.52}
-  m_Center: {x: -3.79, y: 0.4, z: 0.2}
+  m_Size: {x: 6.63, y: 0.82, z: 1.52}
+  m_Center: {x: -4.19, y: 0.4, z: 0.2}
 --- !u!1001 &1406353764
 PrefabInstance:
   m_ObjectHideFlags: 0

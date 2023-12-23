@@ -10,9 +10,8 @@ public class ChainsawScript : MonoBehaviour
 
     
     void OnTriggerEnter(Collider hit){
-        Debug.Log("AAAAA");
         if(hit.CompareTag("Player")){
-            if (playerScript.invicibilityTimer < playerScript.invicibilityDuration) return;
+            if (playerScript.invicibilityTimer < playerScript.invicibilityDuration || (!enemyAIController.frontAttacking && !enemyAIController.spinAttacking)) return;
             playerScript.gutsAudio.Play();
             if(enemyAIController.frontAttacking){
                 playerScript.hit = true;
