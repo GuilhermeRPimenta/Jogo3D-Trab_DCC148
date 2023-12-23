@@ -52,6 +52,7 @@ public class AIController : MonoBehaviour
     public PlayerScript playerScript;
     public GameObject gun;
     public GunController gunController;
+    public bool soundByGenerator = false;
 
     //Destination
     public bool lookedAround = false;

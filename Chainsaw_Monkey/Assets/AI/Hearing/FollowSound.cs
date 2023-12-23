@@ -26,7 +26,6 @@ public class FollowSound : BehaviourTreeNode
         if(!aIController.headAudio.isPlaying){
             aIController.headAudio.Play();
         }
-        
         return true;
     }
 }

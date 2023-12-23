@@ -34,6 +34,7 @@ public class GeneratorScript : MonoBehaviour
 
         running = true;
         enemyAIController.heardSound = true;
+        enemyAIController.soundByGenerator = true;
         sound.clip = startSound;
         sound.Play();
         enemyAIController.soundPosition = transform.position;

@@ -18,8 +18,8 @@ public class PlayerScript : MonoBehaviour
     public Vector3 velocity;
     public float gravity = 9.8f;
     public GameObject feet;
-    private float horizontalInput;
-    private float verticalInput;
+    public float horizontalInput;
+    public float verticalInput;
     private Vector3 moveDirection;
     [SerializeField] private float walkSpeed = 3;
     [SerializeField] private float runningSpeed = 6;
