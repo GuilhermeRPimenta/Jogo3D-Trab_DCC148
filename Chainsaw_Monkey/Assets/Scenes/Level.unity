@@ -31962,7 +31962,7 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   walkSpeed: 3
-  runningSpeed: 8
+  runningSpeed: 9.44
   isRunning: 0
   maxSpeed: 4
   Ground:
