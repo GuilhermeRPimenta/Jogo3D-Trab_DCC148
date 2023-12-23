@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -815,9 +815,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "- ASWD para andar\r\n- Shift para correr\r\n- Mouse para mirar\r\n- Bot\xE3o
     esquerdo do mouse para atirar\r\n- R para recarregar\n- E para ativar o gerador\n-
-    Fuja do inimigo e ative os 4 geradores para abrir a porta\n- Se correr muito
-    o personagem ir\xE1 se cansar, o que pode ser observado pela respira\xE7\xE3o
-    e batimentos card\xEDacos"
+    Fuja do inimigo e ative os 4 geradores para abrir a porta no segundo andar.\n-
+    O inimigo \xE9 atraido por sons. Cuidado ao correr e ativar geradores!\n- Se
+    correr muito o personagem ir\xE1 se cansar, o que pode ser observado pela respira\xE7\xE3o
+    e batimentos card\xEDacos.\n- Pare de correr para descansar."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -930,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.015, y: -0.18}
+  m_AnchoredPosition: {x: -0.015, y: -0.2}
   m_SizeDelta: {x: 0.82, y: 0.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761685050

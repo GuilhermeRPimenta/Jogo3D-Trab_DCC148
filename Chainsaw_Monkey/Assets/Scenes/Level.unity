@@ -44595,7 +44595,7 @@ MonoBehaviour:
   stunDuration: 1.5
   enemyLayer: 0
   enemyHead: {fileID: 0}
-  maxSightDistance: 50
+  maxSightDistance: 20
   heardSound: 0
   soundPosition: {x: 0, y: 0, z: 0}
   playerScript: {fileID: 0}
