@@ -49,6 +49,9 @@ public class AIController : MonoBehaviour
     //Hearing
     public bool heardSound = false;
     public Vector3 soundPosition;
+    public PlayerScript playerScript;
+    public GameObject gun;
+    public GunController gunController;
 
     //Destination
     public bool lookedAround = false;
@@ -100,6 +103,9 @@ public class AIController : MonoBehaviour
         headAudio = enemyHead.GetComponent<AudioSource>();
         chainsawMotor = GameObject.Find("CHR_RArmPalm");
         chainsawMotorAudio = chainsawMotor.GetComponent<AudioSource>();
+        playerScript = player.GetComponent<PlayerScript>();
+        gun = GameObject.Find("P1911");
+        gunController = gun.GetComponent<GunController>();
 
     }
     public void BuildBehaviourTree()

@@ -4,27 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollHealth : MonoBehaviour
-{
+{   
+    
     public Sprite statusText;
     public Image colorBar;
+    public Image heartRate;
     public float scrollSpeed;
     public Sprite[] healthStatus;
     public GameObject statusGameObject;
     public Image statusGameObjectImage;
     public PlayerScript playerScript;
+    public Image bloodImage;
+    public float previousHP;
+    public float bloodAlpha = 0;
 
     void Start()
     {
+        
         colorBar = this.GetComponent<Image>();
         colorBar.color = new Color32(0,255,0,255);
         //statusGameObject.GetComponent<Image>().sprite = status;
         statusGameObjectImage = statusGameObject.GetComponent<Image>();
         statusText = healthStatus[0];
+        bloodImage.color = new Color(1,1,1,0.0f);
 
     }
 
     void Update()
-    {
+    {   
         scrollSpeed = 26 - playerScript.staminaPoints * 1.8f;
         statusGameObjectImage.sprite = statusText;
         colorBar.material.mainTextureOffset = colorBar.material.mainTextureOffset + new Vector2(Time.deltaTime * (-scrollSpeed / 10), 0);
@@ -40,6 +47,20 @@ public class ScrollHealth : MonoBehaviour
         else{
             colorBar.color = new Color32(255,0,0,255);
             statusText = healthStatus[1];
+            if(playerScript.HP <=0 ){
+                colorBar.rectTransform.localScale = new Vector2(1f,0.1f);
+                heartRate.rectTransform.localScale = new Vector2(1f,0.1f);
+            }
+        }
+        if(playerScript.hit){
+            bloodAlpha += Time.deltaTime;
+            bloodAlpha = Mathf.Clamp(bloodAlpha, 0 ,0.5f);
+            bloodImage.color = new Color(1,1,1,bloodAlpha);
+        }
+        else{
+            bloodAlpha -= Time.deltaTime;
+            bloodAlpha = Mathf.Clamp(bloodAlpha, 0 ,0.5f);
+            bloodImage.color = new Color(1,1,1,bloodAlpha);
         }
     }
 }
