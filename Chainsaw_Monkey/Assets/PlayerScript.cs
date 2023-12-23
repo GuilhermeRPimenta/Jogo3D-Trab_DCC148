@@ -59,6 +59,9 @@ public class PlayerScript : MonoBehaviour
     public AudioClip exhaustedAudio;
     public AudioClip dyingAudio;
     public ReiniciarManager restartManager;
+
+    //DEATH
+    public float deathTimer = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -131,7 +134,11 @@ public class PlayerScript : MonoBehaviour
                 playerCamera.transform.localPosition = new Vector3(camPos.x, camPos.y, camPos.z);
             }
 
-            SceneManager.LoadScene(0);
+            if(deathTimer >=3.0f){
+                SceneManager.LoadScene(0);
+            }
+            deathTimer += Time.deltaTime;
+            
         }
         if(staminaPoints <5 && staminaPoints >=2 && !dead  && headAudio.clip != breathingAudio){
             headAudio.clip = breathingAudio;
