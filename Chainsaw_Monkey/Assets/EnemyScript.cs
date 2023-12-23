@@ -41,7 +41,6 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        Debug.Log(health);
         if(health <= 0f)
         {
             Die();
@@ -51,25 +50,6 @@ public class EnemyScript : MonoBehaviour
     void Die()
     {
         isDead = true;
-        //completar logica de quando morre
     }
 
-    /*void OnTriggerEnter(Collider hit){
-        Debug.Log("ENTRO");
-        if(hit.CompareTag("Player")){
-            if (playerScript.invicibilityTimer < playerScript.invicibilityDuration) return;
-            playerScript.gutsAudio.Play();
-            if(enemyAIController.frontAttacking){
-                playerScript.hit = true;
-                playerScript.HP -= 15;
-                playerScript.invicibilityTimer = 0;
-            }
-            else{
-                playerScript.hit = true;
-                playerScript.HP -= 10;
-                playerScript.invicibilityTimer = 0;
-
-            }
-        }
-    }*/
 }

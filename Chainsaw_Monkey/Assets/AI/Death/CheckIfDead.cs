@@ -10,7 +10,6 @@ public class CheckIfDead : BehaviourTreeNode
     }
 
     public override bool process(){
-        //Debug.Log(aIController.dead);
         return aIController.dead;
     }
 }

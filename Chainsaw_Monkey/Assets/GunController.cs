@@ -97,9 +97,6 @@ public class GunController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            //Debug.Log(hit.transform.name);
-            //EnemyScript target = hit.transform.GetComponent<EnemyScript>();
-            //Debug.Log(target);
             if (hit.transform.CompareTag("Enemy")){
                 enemyAIController.HP -= bodyDamage;
                 enemyAIController.SP -= bodyDamage;
@@ -139,9 +136,7 @@ public class GunController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
             GeneratorScript target = hit.transform.GetComponent<GeneratorScript>();
-            Debug.Log(target);
             if (target != null)
             {
                 target.Activate();

@@ -26,7 +26,6 @@ public class ChooseNewDestination : BehaviourTreeNode
                     validPosition = true;   
                 }
             }
-            //Debug.Log(aIController.agent.destination);
         } while(!validPosition);
         aIController.agent.destination = new Vector3(hit.point.x, hit.point.y +0.1f, hit.point.z);
         aIController.agent.speed = aIController.walkingSpeed;

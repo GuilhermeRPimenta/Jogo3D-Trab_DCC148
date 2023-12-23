@@ -16,9 +16,6 @@ public class ReiniciarManager : MonoBehaviour
 
     public void Reiniciar()
     {
-        Debug.Log("cu de macaco");
         SceneManager.LoadScene(1);
-        // voceMorreu.SetActive(false);
-        // botaoReiniciar.SetActive(false);
     }
 }

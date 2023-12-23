@@ -49,7 +49,6 @@ public class GeneratorScript : MonoBehaviour
             }
         }
 
-        Debug.Log("Abriu");
         DoorScript doorScript = door.GetComponent<DoorScript>();
         doorScript.Open();
 
