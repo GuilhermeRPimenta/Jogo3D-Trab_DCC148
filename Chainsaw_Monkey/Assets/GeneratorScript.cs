@@ -10,10 +10,23 @@ public class GeneratorScript : MonoBehaviour
     public AudioSource sound;
     public AIController enemyAIController;
     public GameObject enemyAIHolder;
+    public AudioClip continousSound;
+    public AudioClip startSound;
 
     void Start(){
         enemyAIHolder = GameObject.Find("AIControllerHolder");
         enemyAIController = enemyAIHolder.GetComponent<AIController>(); 
+        sound = GetComponent<AudioSource>();
+    }
+
+    void Update(){
+        if(running){
+            if(!sound.isPlaying){
+                sound.clip = continousSound;
+                sound.loop = true;
+                sound.Play();
+            }
+        }
     }
     public void Activate()
     {
@@ -21,6 +34,8 @@ public class GeneratorScript : MonoBehaviour
 
         running = true;
         enemyAIController.heardSound = true;
+        sound.clip = startSound;
+        sound.Play();
         enemyAIController.soundPosition = transform.position;
         generatorLight.color = Color.green;
         // sound.Play();
