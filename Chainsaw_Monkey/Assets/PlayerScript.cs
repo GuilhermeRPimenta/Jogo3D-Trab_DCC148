@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip breathingAudio;
     public AudioClip exhaustedAudio;
     public AudioClip dyingAudio;
+    public ReiniciarManager restartManager;
     
     // Start is called before the first frame update
     void Start()
@@ -108,6 +110,8 @@ public class PlayerScript : MonoBehaviour
         }*/
         if(HP <=0){
             dead = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             if(!playedDeathScream){
                 if(headAudio.isPlaying){
                     headAudio.Stop();
@@ -126,6 +130,8 @@ public class PlayerScript : MonoBehaviour
                 camPos.y =  camPos.y -1f * Time.deltaTime;
                 playerCamera.transform.localPosition = new Vector3(camPos.x, camPos.y, camPos.z);
             }
+
+            SceneManager.LoadScene(0);
         }
         if(staminaPoints <5 && staminaPoints >=2 && !dead  && headAudio.clip != breathingAudio){
             headAudio.clip = breathingAudio;

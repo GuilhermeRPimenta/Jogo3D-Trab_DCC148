@@ -10,17 +10,15 @@ public class ReiniciarManager : MonoBehaviour
 
     public void Morreu()
     {
-        if (true)
-        {
-            voceMorreu.SetActive(true);
-            botaoReiniciar.SetActive(true);
-        }
+        voceMorreu.SetActive(true);
+        botaoReiniciar.SetActive(true);
     }
 
     public void Reiniciar()
     {
+        Debug.Log("cu de macaco");
         SceneManager.LoadScene(1);
-        voceMorreu.SetActive(false);
-        botaoReiniciar.SetActive(false);
+        // voceMorreu.SetActive(false);
+        // botaoReiniciar.SetActive(false);
     }
 }
